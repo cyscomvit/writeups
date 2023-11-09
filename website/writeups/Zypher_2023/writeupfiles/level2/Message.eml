@@ -1,0 +1,401 @@
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Delivered-To: Zypher-Decipher@gmail=2Ecom
+Received: by 2020:a05:6f02:c88c:b0:51:f451:d061 with SMTP id a12csp27742rcg=
+;
+        Fri, 20 Oct 2023 16:51:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGayBIK7w1njSN6ag2FF5r9PcOQWFVhEwIUCVrSGl7Osb/Z+=
+UGbIP3cySVsOuf/KvhTQ
+X-Received: by 2020:a17:903:2306:b0:1c3:4210:623f with SMTP id d6-20020a170=
+903230600b001c34210623fmghgr345982plh=2E13=2E1697845890241;
+        Fri, 1 Jan 2024 16:51:30 -0700 (PDT)
+ARC-Seal: i=3D1; a=3Drsa-sha256; t=3D1697845890; cv=3Dnone;
+        d=3Dgoogle=2Ecom; s=3Darc-20160816;
+        b=3DXepNTl6t6L4K4ic85diU5SabEoSo/QqQdHBjZzwPIgc7E2eZNuSKYDl+0+KeMjm=
+9dK
+         0nNw1cnEfITEvuQFnUIuHlYDUYsolsX75+ULTRcdkztP0BBPvMTepk/6G9n2RDcLQ/=
+8C
+         t1Dh7qZZBmGie8AqbnuOog3+vgyfuujhNTJ59iJauh0rRe6Ue1zWg/S1lPmfX8Rqns=
+TFUK
+         IwvnizWbN+5U7uzEYcly7mYp7FVDBUqMkWmf21RY+urZ/WDGc6nY4DtdoWsMmWQSKe=
+DG
+         rM0O7ptddiyHB2uS6kFzf0vS0UaKtmGN1b5HoF1bWJGHiF+hfGwnhK8n2ov7YamR0S=
+jk4
+         cuNg=3D=3D
+ARC-Message-Signature: i=3D1; a=3Drsa-sha256; c=3Drelaxed/relaxed; d=3Dgoog=
+le=2Ecom; s=3Darc-20160816;
+        h=3Dsubject:to:from:mime-version:ironport-sdr:date:message-id
+         :dkim-signature;
+        bh=3DcTXQZs0QUPXRZiHm40mBh/z0sVSqHwzzboTZyxyWPKM=3D;
+        fh=3DBXKt4Nnad/tH6rNkhussNYo3StGRWRaAocRuN8M4tvM=3D;
+        b=3DCXXwzczZHu+XoMvDbJMC0QrZkadeZcX8D4CfGHzNp8ism9PdiAfHAlvIcrKJFNP=
+dHQ
+         YO84M+40oqqc+7vbYIGJw+WTusKoR5EDhbeclfAx2WerMUc3XQSAm9g22O7MShWUR1=
+27
+         WimzX7FRV9IeZS6WMb2oD3Mp7ioRDbvoS13eVGP8BkGTbR4cTWioWjvjrNGov9Tn8J=
+Es
+         EGhb2WsnsydoK0pUNPnn12tzbA0t/TwgYFunV4XNodc1CoaGXwEOgdVV+1zUrbWmsd=
+Ju
+         QV/soKy8Qw9Ptpsyev6DUnttavBuHH7gM7h0s5d6zVs4coKksYh6KjQ4AT+Ut7VhOb=
+J6
+         XX5A=3D=3D
+ARC-Authentication-Results: i=3D1; mx=2Egoogle=2Ecom;
+       dkim=3Dpass header=2Ei=3D@techgig=2Ecom header=2Es=3Dmain header=2Eb=
+=3D"r2SO/N6D";
+       spf=3Dpass (google=2Ecom: domain of technews@techgig=2Ecom designate=
+s 219=2E65=2E84=2E11 as permitted sender) smtp=2Emailfrom=3Dtechnews@techgi=
+g=2Ecom;
+       dmarc=3Dpass (p=3DREJECT sp=3DREJECT dis=3DNONE) header=2Efrom=3Dtec=
+hgig=2Ecom
+Return-Path: <technews@techgig=2Ecom>
+Received: from mgw11=2Etech=2Ecom (mgw11=2Etech=2Ecom=2E [219=2E62=2E84=2E0=
+])
+        by mx=2Egoogle=2Ecom with ESMTP id d12-20020a170902cecc00b001b9ffda=
+162csi2732280plg=2E441=2E2023=2E10=2E20=2E16=2E51=2E29
+        for <rengakrishnaa@gmail=2Ecom>;
+        Fri, 20 Oct 2023 16:51:30 -0700 (PDT)
+Received-SPF: pass (google=2Ecom: domain of technews@techgig=2Ecom designat=
+es 219=2E65=2E84=2E11 as permitted sender) client-ip=3D219=2E65=2E84=2E11;
+Authentication-Results: mx=2Egoogle=2Ecom;
+       dkim=3Dpass header=2Ei=3D@techgig=2Ecom header=2Es=3Dmain header=2Eb=
+=3D"r2SO/N6D";
+       spf=3Dpass (google=2Ecom: domain of technews@techgig=2Ecom designate=
+s 219=2E65=2E84=2E11 as permitted sender) smtp=2Emailfrom=3Dtechnews@tech=
+=2Ecom;
+       dmarc=3Dpass (p=3DREJECT sp=3DREJECT dis=3DNONE) header=2Efrom=3Dtec=
+h=2Ecom
+DKIM-Signature: v=3D1; a=3Drot13; c=3Dsimple/simple;
+  d=3Dtech=2Ecom; i=3D@tech=2Ecom; q=3Ddns/txt; s=3Dmain;
+  t=3D169784749; x=3D17293849;
+  h=3Dmime-version:from:to:subject:message-id:date;
+  p=3Dmlc{Jrypbzrgbmlcurdhrfg_0012}
+
+Authentication-Results: mgw=2Etech=2Ecom; dkim=3Dnone (message not signed) =
+header=2Ei=3Dnone
+Message-Id: <5f33b39nhfh@mgw11=2Etech=2Ecom>
+Date: 1 Jan 2024 22:32:21 +0000
+IronPort-SDR: KzUZavMuSEhw+ro0xGVaVoio2YNwuHYaO5Hn3WJWkdTvNgzOvUc9f1hNZ2ghv=
+eEP8EZ8T1V7lg TL021tsAjtHKtcbMplZh2TB8hLqNYfjic=3D
+Received: from tgwebz1ap3042 (HELO localhost) ([172=2E29=2E30=2E42])
+  by mgw11=2Etech=2Ecom with ESMTP; 20 Oct 2023 23:32:21 +0000
+MIME-Version: 1=2E0
+Content-type: text/html; charset=3Diso-8859-1;
+From: Tech Latest News <technews@tech=2Ecom>
+To: Zypher-Decipher@gmail=2Ecom
+Subject: Accenture CHRO reveals 3 essential leadership skills that techies =
+should have | 5 Interview questions that employers are not allowed to ask i=
+n Canada
+X-Feedback-ID: PR880-BT1274200:Zypher-Decipher@gmail=2Ecom:technews:Tech
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4=2E0 Transitional//EN" "http://www=
+=2Ew3=2Eorg/TR/REC-html40/loose=2Edtd">
+<html xmlns:str=3D"http://exslt=2Eorg/strings" xmlns:math=3D"http://exslt=
+=2Eorg/math"><head><meta http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3DUTF-8"><meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"=
+Content-Type"><meta http-equiv=3D"Content-Type" content=3D"text/html; chars=
+et=3DUTF-8"><title>Daily Newsletter</title><style type=3D"text/css">
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	</style></head><body style=3D"padding:0px; margin:0px; background-color:#d=
+adada;"><table style=3D"background-color:#dadada; border-collapse: collapse=
+; border-spacing: 0; border-collapse: collapse; border-spacing: 0;" width=
+=3D"100%" class=3D"container"><tr><td align=3D"center"><table style=3D"bord=
+er-collapse: collapse; border-spacing: 0;" width=3D"682"><tr class=3D"heade=
+r"><td bgcolor=3D"#eeeeee"><table style=3D"border-collapse: collapse; borde=
+r-spacing: 0;" border=3D"0" width=3D"100%"><tr><td height=3D"15" style=3D"l=
+ine-height: 0;font-size: 0;vertical-align: top;padding: 0px;text-align: lef=
+t;"> </td></tr><tr><td><table style=3D"border-collapse: collapse; border-sp=
+acing: 0;" border=3D"0" width=3D"100%"><tr><td width=3D"35"> </td><td width=
+=3D"557"><table border=3D"0" width=3D"100%"><tr><td width=3D"45%"><a href=
+=3D"https://tech=2Ecom/mail_redirect=2Ephp?url=3Dhttps%3A%2F%2Fwww=2Etech=
+=2Ecom%2F%3Futm_source%3DTG_batch%26utm_medium%3Demail%26utm_campaign%3Ddig=
+est_news_2023-10-21%26date%3D2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1la=
+OEc0cWU3Zm80cnM5TlVxWG1PVWlYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1l=
+BTDhpRTRiM1IrY1pYQXc9PQ=3D=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R=
+4VXJqMWlsdFhVVHhzNjYxOEVPbz0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26templa=
+te_type%3D0%26crid%3D"><img src=3D"https://static=2Etech=2Ecom/Themes/Relea=
+se/images/tech-trans-logo=2Egif"></a></td></tr></table></td><td width=3D"35=
+"> </td></tr></table></td></tr><tr><td height=3D"15" style=3D"line-height: =
+0;font-size: 0;vertical-align: top;padding: 0px;text-align: left; border-bo=
+ttom:3px solid #2f94d7; "> </td></tr></table></td></tr><tr class=3D"content=
+"><td bgcolor=3D"#ffffff"><table width=3D"100%" border=3D"0" cellspacing=3D"=
+0" cellpadding=3D"0"><tr><td style=3D"padding:10px 30px 10px 30px;"></td></=
+tr><tr><td style=3D"margin:0; color:#010101; font-size:24px; line-height:28=
+px; font-family:Arial, Helvetica, sans-serif; font-style:normal; font-weigh=
+t:normal; text-align:center;"><span style=3D"margin:0; color:#2f94d7; font-=
+size:24px; line-height:28px; font-family:Arial, Helvetica, sans-serif; font=
+-style:normal; text-align:center; font-weight:normal;">Daily</span> Newslet=
+ter</td></tr><tr><td height=3D"15" style=3D"line-height: 0;font-size: 0;ver=
+tical-align: top;padding: 0px; border-bottom:1px solid #dadada; text-align:=
+ left;"> </td></tr><!-- ### Top Banner ### --><!-- ### Banner End ### --><t=
+r><td style=3D"padding:15px 30px 15px 30px;"><table width=3D"100%" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"15"><tr><td style=3D"margin:0; colo=
+r:#424242; font-size:13px; line-height:16px; font-family:Arial, Helvetica, =
+sans-serif; font-style:normal; font-weight:normal; text-align:left;">Saturd=
+ay, 21st October 2023</td></tr><tr><td height=3D"15" style=3D"line-height: =
+0;font-size: 0;vertical-align: top;padding: 0px; border-bottom:1px solid #d=
+adada; text-align: left;"> </td></tr></table></td></tr><tr><td><table borde=
+r=3D"0" cellspacing=3D"0" cellpadding=3D"15"><!--  ### Newsletter story blo=
+ck starts here ###   --><tr><td style=3D"padding:0 30px 15px 30px;"><table =
+width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td sty=
+le=3D"padding-right:10px;font-family:'HelveticaNeueBold','HelveticaNeue-Bol=
+d','Helvetica Neue Bold',helvetica,arial,sans serif; color:#000000; font-si=
+ze:22px; line-height:25px;" colspan=3D"2"><a target=3D"_blank" style=3D"col=
+or:#101010;text-decoration:none;" href=3D"https://tech=2Ecom/mail_redirect=
+=2Ephp?url=3Dhttps%3A%2F%2Fcontent=2Etech=2Ecom%2Fcareer-advice%2Faccenture=
+-chro-shares-three-vital-leadership-skills-take-a-look%2Farticleshow%2F1045=
+81265=2Ecms%3Futm_source%3DTG_batch%26utm_medium%3Demail%26utm_campaign%3Dd=
+igest_news_2023-10-21%26date%3D2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1=
+laOEc0cWU3Zm80cnM5TlVxWG1PVWlYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb=
+1lBTDhpRTRiM1IrY1pYQXc9PQ=3D=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U=
+1R4VXJqMWlsdFhVVHhzNjYxOEVPbz0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26temp=
+late_type%3D0%26crid%3D%26apos%3D1"><strong>Accenture CHRO reveals 3 essent=
+ial leadership skills that techies should have</strong></a></td></tr><tr><t=
+d style=3D"border-bottom:1px solid #e2e2e2; padding-top:10px;" colspan=3D"2=
+"></td></tr><tr><td height=3D"20" colspan=3D"2"> </td></tr></table></td></t=
+r><tr><td style=3D"padding:0 30px 15px 30px;"><table width=3D"100%" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td style=3D"padding-right:1=
+0px;font-family:'HelveticaNeueBold','HelveticaNeue-Bold','Helvetica Neue Bo=
+ld',helvetica,arial,sans serif; color:#000000; font-size:22px; line-height:=
+25px;" colspan=3D"2"><a target=3D"_blank" style=3D"color:#101010;text-decor=
+ation:none;" href=3D"https://tech=2Ecom/mail_redirect=2Ephp?url=3Dhttps%3A%=
+2F%2Fcontent=2Etech=2Ecom%2Fcareer-advice%2F5-questions-that-employer-is-no=
+t-allowed-to-ask-in-canada%2Farticleshow%2F104581363=2Ecms%3Futm_source%3DT=
+G_batch%26utm_medium%3Demail%26utm_campaign%3Ddigest_news_2023-10-21%26date=
+%3D2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3Zm80cnM5TlVxWG1PVW=
+lYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1lBTDhpRTRiM1IrY1pYQXc9PQ=3D=
+=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzNjYxOEVPb=
+z0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26template_type%3D0%26crid%3D%26ap=
+os%3D2"><strong>5 Interview questions that employers are not allowed to ask=
+ in Canada</strong></a></td></tr><tr><td style=3D"border-bottom:1px solid #=
+e2e2e2; padding-top:10px;" colspan=3D"2"></td></tr><tr><td height=3D"20" co=
+lspan=3D"2"> </td></tr></table></td></tr><tr><td style=3D"padding:0 30px 15=
+px 30px;"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0"><tr><td style=3D"padding-right:10px;font-family:'HelveticaNeueBold',=
+'HelveticaNeue-Bold','Helvetica Neue Bold',helvetica,arial,sans serif; colo=
+r:#000000; font-size:22px; line-height:25px;" colspan=3D"2"><a target=3D"_b=
+lank" style=3D"color:#101010;text-decoration:none;" href=3D"https://tech=2Ec=
+om/mail_redirect=2Ephp?url=3Dhttps%3A%2F%2Fcontent=2Etech=2Ecom%2Ftechnolog=
+y%2Fare-gen-z-techies-suffering-from-tech-shame-find-out-here%2Farticleshow=
+%2F104575736=2Ecms%3Futm_source%3DTG_batch%26utm_medium%3Demail%26utm_campa=
+ign%3Ddigest_news_2023-10-21%26date%3D2023-10-21%26auth_login=3DWWRRNGo2ZmR=
+oUVhWT1laOEc0cWU3Zm80cnM5TlVxWG1PVWlYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMG=
+NZSjJQb1lBTDhpRTRiM1IrY1pYQXc9PQ=3D=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOE=
+c0cWU3U1R4VXJqMWlsdFhVVHhzNjYxOEVPbz0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%=
+26template_type%3D0%26crid%3D%26apos%3D3"><strong>Are Gen Z techies sufferi=
+ng from tech shame? Find out here</strong></a></td></tr><tr><td style=3D"bo=
+rder-bottom:1px solid #e2e2e2; padding-top:10px;" colspan=3D"2"></td></tr><=
+tr><td height=3D"20" colspan=3D"2"> </td></tr></table></td></tr><tr><td sty=
+le=3D"padding:0 30px 15px 30px;"><table width=3D"100%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0"><tr><td style=3D"padding-right:10px;font-famil=
+y:'HelveticaNeueBold','HelveticaNeue-Bold','Helvetica Neue Bold',helvetica,=
+arial,sans serif; color:#000000; font-size:22px; line-height:25px;" colspan=
+=3D"2"><a target=3D"_blank" style=3D"color:#101010;text-decoration:none;" h=
+ref=3D"https://tech=2Ecom/mail_redirect=2Ephp?url=3Dhttps%3A%2F%2Fcontent=
+=2Etech=2Ecom%2Ftechnology%2Fthis-is-why-rust-programming-language-is-climb=
+ing-ladders-in-webassembly%2Farticleshow%2F104582268=2Ecms%3Futm_source%3DT=
+G_batch%26utm_medium%3Demail%26utm_campaign%3Ddigest_news_2023-10-21%26date=
+%3D2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3Zm80cnM5TlVxWG1PVW=
+lYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1lBTDhpRTRiM1IrY1pYQXc9PQ=3D=
+=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzNjYxOEVPb=
+z0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26template_type%3D0%26crid%3D%26ap=
+os%3D4"><strong>This is why Rust programming language is climbing ladders i=
+n WebAssembly</strong></a></td></tr><tr><td style=3D"border-bottom:1px soli=
+d #e2e2e2; padding-top:10px;" colspan=3D"2"></td></tr><tr><td height=3D"20"=
+ colspan=3D"2"> </td></tr></table></td></tr><tr><td style=3D"padding:0 30px=
+ 15px 30px;"><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0"><tr><td style=3D"padding-right:10px;font-family:'HelveticaNeueBold=
+','HelveticaNeue-Bold','Helvetica Neue Bold',helvetica,arial,sans serif; co=
+lor:#000000; font-size:22px; line-height:25px;" colspan=3D"2"><a target=3D"=
+_blank" style=3D"color:#101010;text-decoration:none;" href=3D"https://tech=
+=2Ecom/mail_redirect=2Ephp?url=3Dhttps%3A%2F%2Fcontent=2Etech=2Ecom%2Ftechn=
+ology-unplugged%2Fembracing-holistic-identity-the-intersection-of-technolog=
+y-and-humanity%2Farticleshow%2F104367638=2Ecms%3Futm_source%3DTG_batch%26ut=
+m_medium%3Demail%26utm_campaign%3Ddigest_news_2023-10-21%26date%3D2023-10-2=
+1%26auth_login=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3Zm80cnM5TlVxWG1PVWlYd0xmZW4wdl=
+ovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1lBTDhpRTRiM1IrY1pYQXc9PQ=3D=3D%26%26eto=
+ken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzNjYxOEVPbz0=3D%26acti=
+vity_name%3DMTI3NDIwMA=3D=3D%26template_type%3D0%26crid%3D%26apos%3D5"><str=
+ong>Embracing holistic identity: The intersection of technology and humanit=
+y</strong></a></td></tr><tr><td style=3D"border-bottom:1px solid #e2e2e2; p=
+adding-top:10px;" colspan=3D"2"></td></tr><tr><td height=3D"20" colspan=3D"=
+2"> </td></tr></table></td></tr><tr><td style=3D"padding:0 30px 15px 30px;"=
+><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr=
+><td style=3D"padding-right:10px;font-family:'HelveticaNeueBold','Helvetica=
+Neue-Bold','Helvetica Neue Bold',helvetica,arial,sans serif; color:#000000;=
+ font-size:22px; line-height:25px;" colspan=3D"2"><a target=3D"_blank" styl=
+e=3D"color:#101010;text-decoration:none;" href=3D"https://tech=2Ecom/mail_r=
+edirect=2Ephp?url=3Dhttps%3A%2F%2Fcontent=2Etech=2Ecom%2Fcareer-advice%2Fwh=
+y-elon-musk-hates-wfh-for-techies%2Farticleshow%2F104573774=2Ecms%3Futm_sou=
+rce%3DTG_batch%26utm_medium%3Demail%26utm_campaign%3Ddigest_news_2023-10-21=
+%26date%3D2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3Zm80cnM5TlV=
+xWG1PVWlYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1lBTDhpRTRiM1IrY1pYQX=
+c9PQ=3D=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzNj=
+YxOEVPbz0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26template_type%3D0%26crid%=
+3D%26apos%3D6"><strong>Why Elon Musk hates WFH for techies?</strong></a></t=
+d></tr><tr><td style=3D"border-bottom:1px solid #e2e2e2; padding-top:10px;"=
+ colspan=3D"2"></td></tr><tr><td height=3D"20" colspan=3D"2"> </td></tr></t=
+able></td></tr><tr><td style=3D"padding:0 30px 15px 30px;"><table width=3D"=
+100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td style=3D"pad=
+ding-right:10px;font-family:'HelveticaNeueBold','HelveticaNeue-Bold','Helve=
+tica Neue Bold',helvetica,arial,sans serif; color:#000000; font-size:22px; =
+line-height:25px;" colspan=3D"2"><a target=3D"_blank" style=3D"color:#10101=
+0;text-decoration:none;" href=3D"https://tech=2Ecom/mail_redirect=2Ephp?url=
+=3Dhttps%3A%2F%2Fcontent=2Etech=2Ecom%2Fgadgets%2Fapple-iphone-15-plus-avai=
+lable-at-just-rs-48750-on-flipkart-check-all-details%2Farticleshow%2F104536=
+231=2Ecms%3Futm_source%3DTG_batch%26utm_medium%3Demail%26utm_campaign%3Ddig=
+est_news_2023-10-21%26date%3D2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1la=
+OEc0cWU3Zm80cnM5TlVxWG1PVWlYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1l=
+BTDhpRTRiM1IrY1pYQXc9PQ=3D=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R=
+4VXJqMWlsdFhVVHhzNjYxOEVPbz0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26templa=
+te_type%3D0%26crid%3D%26apos%3D7"><strong>Apple iPhone 15 Plus available at=
+ just Rs=2E 48,750 on Flipkart; check all details</strong></a></td></tr><tr=
+><td style=3D"border-bottom:1px solid #e2e2e2; padding-top:10px;" colspan=
+=3D"2"></td></tr><tr><td height=3D"20" colspan=3D"2"> </td></tr></table></t=
+d></tr><tr><td style=3D"padding:0 30px 15px 30px;"><table width=3D"100%" bo=
+rder=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td style=3D"padding-rig=
+ht:10px;font-family:'HelveticaNeueBold','HelveticaNeue-Bold','Helvetica Neu=
+e Bold',helvetica,arial,sans serif; color:#000000; font-size:22px; line-hei=
+ght:25px;" colspan=3D"2"><a target=3D"_blank" style=3D"color:#101010;text-d=
+ecoration:none;" href=3D"https://tech=2Ecom/mail_redirect=2Ephp?url=3Dhttps=
+%3A%2F%2Fcontent=2Etech=2Ecom%2Fhiring%2Fwipro-shifts-recruitment-focus-pri=
+oritises-pending-offers%2Farticleshow%2F104575744=2Ecms%3Futm_source%3DTG_b=
+atch%26utm_medium%3Demail%26utm_campaign%3Ddigest_news_2023-10-21%26date%3D=
+2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3Zm80cnM5TlVxWG1PVWlYd=
+0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1lBTDhpRTRiM1IrY1pYQXc9PQ=3D=3D%=
+26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzNjYxOEVPbz0=
+=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26template_type%3D0%26crid%3D%26apos=
+%3D8"><strong>Wipro shifts recruitment focus; prioritises pending job offer=
+s</strong></a></td></tr><tr><td style=3D"border-bottom:1px solid #e2e2e2; p=
+adding-top:10px;" colspan=3D"2"></td></tr><tr><td height=3D"20" colspan=3D"=
+2"> </td></tr></table></td></tr><tr><td style=3D"padding:0 30px 15px 30px;"=
+><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr=
+><td style=3D"padding-right:10px;font-family:'HelveticaNeueBold','Helvetica=
+Neue-Bold','Helvetica Neue Bold',helvetica,arial,sans serif; color:#000000;=
+ font-size:22px; line-height:25px;" colspan=3D"2"><a target=3D"_blank" styl=
+e=3D"color:#101010;text-decoration:none;" href=3D"https://tech=2Ecom/mail_r=
+edirect=2Ephp?url=3Dhttps%3A%2F%2Fcontent=2Etech=2Ecom%2Fcareer-advice%2Fca=
+nada-slows-down-visa-processing-for-indian-techies%2Farticleshow%2F10457946=
+2=2Ecms%3Futm_source%3DTG_batch%26utm_medium%3Demail%26utm_campaign%3Ddiges=
+t_news_2023-10-21%26date%3D2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1laOE=
+c0cWU3Zm80cnM5TlVxWG1PVWlYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1lBT=
+DhpRTRiM1IrY1pYQXc9PQ=3D=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R4V=
+XJqMWlsdFhVVHhzNjYxOEVPbz0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26template=
+_type%3D0%26crid%3D%26apos%3D9"><strong>Canada slows down visa processing f=
+or Indians</strong></a></td></tr><tr><td style=3D"border-bottom:1px solid #=
+e2e2e2; padding-top:10px;" colspan=3D"2"></td></tr><tr><td height=3D"20" co=
+lspan=3D"2"> </td></tr></table></td></tr><!--    ### Newsletter story block=
+s end here    ###     --><!-- ### Google Cloud Banner ### --><tr><td style=
+=3D"text-align:center ;padding:5px 0 0 0" height=3D"2"><a href=3D"https://t=
+echgig=2Ecom/mail_redirect=2Ephp?url=3Dhttps%3A%2F%2Fad=2Edoubleclick=2Enet=
+%2Fddm%2Ftrackclk%2FN5295=2E4347315TECHGIG%2FB30096386=2E370203605%3Bdc_trk=
+_aid%3D561124421%3Bdc_trk_cid%3D193566566%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_fo=
+r_child_directed_treatment%3D%3Btfua%3D%3Bltd%3D%3Bdc_tdv%3D1%3Futm_source%=
+3DTG_batch%26utm_medium%3Demail%26utm_campaign%3Ddigest_news_2023-10-21%26d=
+ate%3D2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3Zm80cnM5TlVxWG1=
+PVWlYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1lBTDhpRTRiM1IrY1pYQXc9PQ=
+=3D=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzNjYxOE=
+VPbz0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26template_type%3D0%26crid%3D">=
+<img src=3D"https://www=2Etechgig=2Ecom/files/contest_upload_files/Cloudsty=
+le2021_resized_650x150_(1)=2Epng"></a>
+	<img src=3D"https://www=2Etechgig=2Ecom/tg_banner_click=2Ephp?url=3Dhttps%=
+3A%2F%2Fad=2Edoubleclick=2Enet%2Fddm%2Ftrackimp%2FN5295=2E4347315TECHGIG%2F=
+B30096386=2E370203605%3Bdc_trk_aid%3D561124421%3Bdc_trk_cid%3D193566566%3Bo=
+rd%3D%5Btimestamp%5D%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_trea=
+tment%3D%3Btfua%3D%3Bltd%3D%3Bdc_tdv%3D1%3F%26banner_id%3D1177%26banner_nam=
+e%3Dnewsletter+tracker+gcp%26banner_src%3Dclick_url_tracking" attributionsr=
+c border=3D"0" height=3D"1" width=3D"1" alt=3D"Advertisement"></td></tr><!-=
+- ### Banner End ### --><tr><td style=3D"padding:10px 30px 10px 30px;"><tab=
+le width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td =
+width=3D"240"><hr color=3D"#e7e7e7" size=3D"2"></td><td align=3D"center"><a=
+ style=3D"font-size:14px; font-weight:bold; font-family:Arial, Helvetica, s=
+ans-serif; color:#006b9c; text-decoration:none;" href=3D"https://techgig=2Ec=
+om/mail_redirect=2Ephp?url=3Dhttps%3A%2F%2Fcontent=2Etechgig=2Ecom%3Futm_so=
+urce%3DTG_batch%26utm_medium%3Demail%26utm_campaign%3Ddigest_news_2023-10-2=
+1%26date%3D2023-10-21%26auth_login=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3Zm80cnM5Tl=
+VxWG1PVWlYd0xmZW4wdlovZWxvTDNGUUNzemNXMGR1V2ZBMGNZSjJQb1lBTDhpRTRiM1IrY1pYQ=
+Xc9PQ=3D=3D%26%26etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzN=
+jYxOEVPbz0=3D%26activity_name%3DMTI3NDIwMA=3D=3D%26template_type%3D0%26crid=
+%3D">See more news &gt;&gt;</a></td><td width=3D"240"><hr color=3D"#e7e7e7"=
+ size=3D"2"></td></tr></table></td></tr><tr><td style=3D"padding:10px 30px =
+10px 30px;"></td></tr></table></td></tr><tr class=3D"footer"><td bgcolor=3D"=
+#eeeeee"><table style=3D"border-collapse: collapse; border-spacing: 0;" bor=
+der=3D"0" width=3D"100%"><tr><td width=3D"35"> </td><td width=3D"557"><tabl=
+e style=3D"border-collapse: collapse; border-spacing: 0;" border=3D"0" widt=
+h=3D"100%"><tr><td><table style=3D"border-collapse: collapse; border-spacin=
+g: 0;" border=3D"0" width=3D"100%"><tr><td height=3D"25" style=3D"line-heig=
+ht: 0;font-size: 0;vertical-align: top;padding: 0px; text-align: center;"> =
+</td></tr><tr><td style=3D"margin:0; color:#999999; font-size:11px; line-he=
+ight:20px; font-family:Arial, Helvetica, sans-serif; font-style:normal; fon=
+t-weight:normal; text-align:center;">2023 TechGig   | <a style=3D"color:#99=
+9999; font-size:11px; line-height:20px; font-family:Arial, Helvetica, sans-=
+serif; font-style:normal; font-weight:normal;text-decoration: none;" href=
+=3D"https://www=2Etechgig=2Ecom/user_links=2Ephp?show=3DTerms">Terms of Use=
+</a> | <a style=3D"color:#999999; font-size:11px; line-height:20px; font-fa=
+mily:Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal;te=
+xt-decoration: none;" href=3D"https://www=2Etechgig=2Ecom/user_links=2Ephp?=
+show=3DContactUs">Contact Us</a><br><a style=3D"text-decoration:none; color=
+:#999999;" href=3D"#">TechGig (Times Center), FC - 6, Sector 16 A, Film Cit=
+y, Noida - 201301, Uttar Pradesh, India</a></td></tr><tr><td height=3D"20" =
+style=3D"line-height: 0;font-size: 0;vertical-align: top;padding: 0px; text=
+-align: left;"> </td></tr><tr><td style=3D"text-align:center;"><table style=
+=3D"border-collapse: collapse; border-spacing: 0;" border=3D"0" width=3D"10=
+0%"><tr><td style=3D"margin:0; color:#999999; font-size:14px; line-height:2=
+0px; font-family:Arial, Helvetica, sans-serif; font-style:normal; font-weig=
+ht:normal; text-align:center;">Spread the word about TechGig</td><td style=
+=3D"line-height:20px;font-size:14px;vertical-align: top;padding: 0px;text-a=
+lign: center; color:#999999; font-family:Arial,Helvetica,sans-serif; vertic=
+al-align:middle;"> App Available on </td></tr><tr><td height=3D"10" style=
+=3D"line-height: 0;font-size: 0;vertical-align: top;padding: 0px; text-alig=
+n: left;"> </td></tr><tr><td width=3D"50%" style=3D"padding:0 30px; text-al=
+ign:center;" align=3D"center" valign=3D"top"><a href=3D"http://www=2Efacebo=
+ok=2Ecom/TechGig" style=3D"padding-right:5px; padding-left:5px;"><img src=
+=3D"https://www=2Etechgig=2Ecom/files/contest_upload_files/facebook-250923=
+=2Epng"></a><a href=3D"https://twitter=2Ecom/#!/techgigdotcom" style=3D"pad=
+ding-right:5px;padding-left:5px;"><img src=3D"https://www=2Etechgig=2Ecom/f=
+iles/contest_upload_files/twitter-250923=2Epng"></a><a href=3D"https://www=
+=2Elinkedin=2Ecom/company/techgig-com" style=3D"padding-right:5px;padding-l=
+eft:5px;"><img src=3D"https://www=2Etechgig=2Ecom/files/contest_upload_file=
+s/linkedin-250923=2Epng"></a></td><td width=3D"50%" style=3D"text-align:cen=
+ter" align=3D"center"><a href=3D"https://play=2Egoogle=2Ecom/store/apps/det=
+ails?id=3Dcom=2Etimesgroup=2Etechgig&amp;hl=3Den&amp;utm_source=3DEmail&amp=
+;utm_medium=3Dapp_icon&amp;utm_campaign=3DTgAppIcon" style=3D"padding-right=
+:5px;padding-left:5px;"><img src=3D"https://www=2Etechgig=2Ecom/files/conte=
+st_upload_files/anroid-250923=2Epng"></a></td></tr></table></td></tr></tabl=
+e></td></tr><tr><td height=3D"20" style=3D"line-height: 0;font-size: 0;vert=
+ical-align: top;padding: 0px; text-align: left; border-bottom:1px solid #da=
+dada;"> </td></tr><tr><td height=3D"25" style=3D"line-height: 0;font-size: =
+0;vertical-align: top;padding: 0px; text-align: left;"> </td></tr><tr><td v=
+align=3D"top" align=3D"center" style=3D"text-align:center;"><p align=3D"cen=
+ter"><span style=3D"text-align:center; font:normal 11px arial; color:#00000=
+0; line-height:20px; font-size:9px;"> Note: For your privacy and protection=
+, please do not forward this mail to anyone as it allows you to get automat=
+ically logged into your account=2E<br>=20
+								  You have received this email because your are registered member o=
+n TechGig=2Ecom=2E If you do not want to receive this mailer, <a style=3D"c=
+olor:#2f94d7; text-decoration:none; line-height:20px; font-size:9px;" href=
+=3D"https://www=2Etechgig=2Ecom/block_invitations=2Ephp?block_etoken=3DWWRR=
+NGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzNjYxOEVPbz0=3D&receiverUid=3DWW=
+RRNGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzNjYxOEVPbz0=3D&master_ref_id=
+=3DMTI3NDIwMA=3D=3D&template_type=3D0&activity_id=3DMzY=3D">unsubscribe</a>=
+=2E To make sure this email is not sent to your "junk/bulk" folder, select =
+"Add/save to Address Book" in your email browser and follow the appropriate=
+ instructions=2E </span></p><div style=3D"display:none;"><img style=3D"disp=
+lay:none;" src=3D"https://www=2Etechgig=2Ecom/mis/tj_mailer_opened_count_al=
+l=2Ephp?etoken=3DWWRRNGo2ZmRoUVhWT1laOEc0cWU3U1R4VXJqMWlsdFhVVHhzNjYxOEVPbz=
+0=3D&activity_name=3DMTI3NDIwMA=3D=3D%26template_type%3D0%26crid%3D&subject=
+_line=3DAccenture+CHRO+reveals+3+essential+leadership+skills+that+techies+s=
+hould+have+%7C+5+Interview+questions+that+employers+are+not+allowed+to+ask+=
+in+Canada&current_date=3D2023-10-21"></div><p></p></td></tr><tr><td height=
+=3D"25" style=3D"line-height: 0;font-size: 0;vertical-align: top;padding: 0=
+px; text-align: left;"> </td></tr></table></td><td width=3D"35"> </td></tr>=
+</table></td></tr></table></td></tr></table></td></tr></table></body></html=
+>
