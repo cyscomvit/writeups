@@ -2,4 +2,4 @@ User-agent: *
 
 Disallow: /norobots/
 
-Sitemap: writeups.cyscomvit.com/sitemap.xml
+Sitemap: https://writeups.cyscomvit.com/sitemap.xml
