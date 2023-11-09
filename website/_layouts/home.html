@@ -31,13 +31,13 @@ endfor %} {% endif %}
 			<div class="row no-gutters">
 				<div class="col-sm-2 d-flex justify-content-center">
 					<img
-						class="card-img ml-3"
+						class="card-img"
 						style="object-fit: contain"
 						src="{% link assets/img/{{post.cover | default: 'cyscom-logo.png'}} %}"
 						alt="Event Logo"
 					/>
 				</div>
-				<div class="col-sm-9 ml-1">
+				<div class="col-sm-9">
 					<div class="card-body">
 						<h1 class="card-title">{{ post.title }}</h1>
 
