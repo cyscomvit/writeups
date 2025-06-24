@@ -1,8 +1,15 @@
-# CYSCOM JUICE SHOP WALKTHROUGH
+---
+layout: writeup
+title: CYSCOM JUICE SHOP WALKTHROUGH
+date: 2025-01-01
+categories: [web, ctf]
+tags: [sql-injection, xss, ssti, idor, authentication]
+---
 
-<img src="./imagedata/logo.png"> 
+![](imagedata/logo.png)
 
-The CYSCOM JUICE SHOP, like OSWAP Juice Shop,includes a broad spectrum of vulnerabilities from simple input-based flaws to logic and design-level flaws. Understanding the rationale behind each exploit reinforces the importance of layered security, input validation, and robust authentication design.
+The CYSCOM JUICE SHOP, like OSWAP Juice Shop, includes a broad spectrum of vulnerabilities from simple input-based flaws to logic and design-level flaws. Understanding the rationale behind each exploit reinforces the importance of layered security, input validation, and robust authentication design.
+
 This document provides a detailed analysis of each challenge presented in the CYSCOM Juice Shop Challenge. Each vulnerability is explained alongside its exploitation method and the flag retrieval steps.
 
 ## TASK 1: MAIN FLAGS
@@ -42,7 +49,7 @@ The `/admi`n endpoint, typically hidden, becomes accessible post-SQL injection l
 
 <img src="./imagedata/Picture7.png" > 
 
-The leaked credentials can be used to authenticate normally to ‘admin’ user and retrieve the corresponding flag. 
+The leaked credentials can be used to authenticate normally to 'admin' user and retrieve the corresponding flag. 
 
 <img src="./imagedata/Picture8.png"> 
 
@@ -162,7 +169,7 @@ Event handlers like onerror are triggered under certain browser events. Injectin
 
 ### Broken Authentication - Token Forgery
 
-The application allows password resets via a token which is easily found on the “/admin” endpoint. Lack of proper validation enables unauthorized access.
+The application allows password resets via a token which is easily found on the "/admin" endpoint. Lack of proper validation enables unauthorized access.
 
 <img src="./imagedata/Picture31.png"> 
 
@@ -184,7 +191,7 @@ Only few accounts have the ability to reset password. Not all accounts can reset
 
 ### Lost User (OSINT Challenge)
 
-This is an OSINT challenge that starts by logging in to the `cabinet` user. This user already has a note with a heading “remember the date” and a link to a webpage.
+This is an OSINT challenge that starts by logging in to the `cabinet` user. This user already has a note with a heading "remember the date" and a link to a webpage.
 
 <img src="./imagedata/Picture34.png"> 
 
@@ -206,7 +213,7 @@ Clicking the `view Flags` button, we are given the Lost User flag.
 
 ### Type Juggling (PHP)
 
-Type juggling or type casting refers to a PHP functionality. Since PHP does not require explicit type definition in variable declaration, a string can be assigned to a variable ‘a’ and later on an int can also be assigned to variable ‘a’. 
+Type juggling or type casting refers to a PHP functionality. Since PHP does not require explicit type definition in variable declaration, a string can be assigned to a variable 'a' and later on an int can also be assigned to variable 'a'. 
 ```
  '0e12345' == '0e54321' // true in PHP
 ```
@@ -236,7 +243,7 @@ To the `/api/v1/verify_backup` endpoint, which bypasses the authentication with 
 
 ### Prototype Pollution (JavaScript)
 
-Prototype pollution is a JavaScript vulnerability that enables an attacker to add arbitrary properties to global object prototypes, which might be inherited by user-defined objects. This vulnerability let’s an attacker control property of objects that would otherwise be inaccessible. 
+Prototype pollution is a JavaScript vulnerability that enables an attacker to add arbitrary properties to global object prototypes, which might be inherited by user-defined objects. This vulnerability let's an attacker control property of objects that would otherwise be inaccessible. 
 JavaScript objects inherit from Object.prototype. Injecting into `__proto__` alters default properties application-wide, potentially bypassing logic or introducing backdoors.
 
 To emulate this, we can send a curl request to the server using this data:
