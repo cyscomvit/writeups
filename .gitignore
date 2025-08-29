@@ -5,3 +5,5 @@
 .venv2
 website/_site/
 website/Gemfile.lock
+node_modules
+
