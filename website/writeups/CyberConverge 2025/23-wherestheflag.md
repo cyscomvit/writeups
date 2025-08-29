@@ -31,15 +31,15 @@ Inside the flag.txt -> `https://www.youtube.com/watch?v=-qgOZDRDynw?data=‌​�
 
 Using tools like [CyberChef](https://gchq.github.io/CyberChef/) we can see that there are hidden charecters.It turns out zero-width characters like `U+200C` and `U+200B` were used to encode binary data. Using online tools like [this](https://330k.github.io/misc_tools/unicode_steganography.html), we can analyze the extracted content.
 
-<img src="../images/cyberchef.png" />
+<img src="./images/cyberchef.png" />
 
 Once decoded, we download the revealed hidden file.
 
-<img src="../images/decode.png" />
+<img src="./images/decode.png" />
 
 We inspect the contents using `xxd` to view the raw hex data:
 
-<img src="../images/outxxd.png" />
+<img src="./images/outxxd.png" />
 
 The content looks XOR-encoded, so we decode it using the key 0xFF:
 

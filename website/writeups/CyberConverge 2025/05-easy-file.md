@@ -20,7 +20,7 @@ Just try and change the view?file=db_errors.log to common paths like ../app.py o
 
 Visiting http://20.244.12.130:50002/view?file=../flag.txt give:
 
-<img src="../images/easyhex.png" />
+<img src="./images/easyhex.png" />
 
 A string of hex numbers: ` 57 56 57 50 7b 6a 34 6e 42 5f 6e 6c 34 70 33 6c 6d 34 46 5f 70 38 66 48 5f 39 33 39 38 35 31 7d `
 

@@ -76,7 +76,7 @@ p.interactive()
 ```
 
 Running the script produces the output as the required flag.
-<img src="../images/mrobotflag.png" />
+<img src="./images/mrobotflag.png" />
 
 
 ### The flag found is:

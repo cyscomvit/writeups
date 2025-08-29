@@ -28,10 +28,10 @@ flag: CBCV{CRYPT_C4N_B3_L4Y3R5}
 
 ```python
 # Step 1: USE Morse decoder
-<img src="../images/morsedecoded1.png" />
+<img src="./images/morsedecoded1.png" />
 
 # Step 2 & 3: Base32 decode and ROT13
-<img src="../images/from32baseandrot13.png" />
+<img src="./images/from32baseandrot13.png" />
 
 # Step 4:Remove Alphabets from EVEN Postion
 ACBBCCDVE{FCGRHYIPJTK_LCM4NNO_PBQ3R_SLT4UYV3WRX5Y}Z

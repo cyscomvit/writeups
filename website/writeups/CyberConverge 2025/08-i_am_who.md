@@ -22,7 +22,7 @@ This requires elevated privilages.
 
 Use jwt.io to encode a cookie without any algorithm to bypass auth.
 
-<img src="../images/iam.png" />
+<img src="./images/iam.png" />
 
 This allows access to admin panel. But this isnt the end, we reqire another endpoint `finalcheck`
 And a new role called `superadmin` is needed.
@@ -30,7 +30,7 @@ We can brute force common secret keys like `secret` or `qwerty` (in this case it
 
 Using jwt.io we craft a cookie and send it.
 
-<img src="../images/iam2.png" />
+<img src="./images/iam2.png" />
 
 Now we can access the /finalcheck endpoint and see the flag.
 

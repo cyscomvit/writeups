@@ -21,7 +21,7 @@ Decode it using tools like www.jwt.io
 
 It give the flag as  `"sub":"CBCV{jWt_t0k3ns_us3d_34}" `
 
-<img src="../images/jwt1.png" />
+<img src="./images/jwt1.png" />
 
 
 ### The flag found is:

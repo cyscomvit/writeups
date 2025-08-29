@@ -36,7 +36,7 @@ To try and fix the MD5 Check, we need to use hex editors like `hexedit`.
 We know 2 in hex is 32 and 0 in hex is 30.
 Replace these values with the hexeditor where there are 0s.
 
-<img src="../images/locked.png" />
+<img src="./images/locked.png" />
 
 Now run the file again. We get the flag
 

@@ -72,7 +72,7 @@ if pin == "98315":
         print("Bad pin!")
 ```
 
-<img src="../images/aint.png" />
+<img src="./images/aint.png" />
 
 
 ### The flag found is:

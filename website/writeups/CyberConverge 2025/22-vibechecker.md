@@ -27,15 +27,15 @@ Running the file gives us an option to enter some text. We need to enter the cor
 
 We try to decompile the file using decompilers like gdb or Ghidra. We can see the main function of the program check the input text in a funciton to verify it. 
 
-<img src="../images/vibefile.png" />
+<img src="./images/vibefile.png" />
 
 Since we know the flag starts with CBCV{XXXX} format, we try an search it.
 
-<img src="../images/searchvibe.png" />
+<img src="./images/searchvibe.png" />
 
 Checking the check_flag function:
 
-<img src="../images/stackvibe.png" />
+<img src="./images/stackvibe.png" />
 
 
 This Data looks like its obsfucated. We can try using rol(2 bits) or ror(3 bits), float casting and bit pattern comparisions to find the flag.

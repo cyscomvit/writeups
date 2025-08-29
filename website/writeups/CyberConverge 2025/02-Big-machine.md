@@ -15,7 +15,7 @@ flag: CBCV{3nv1r0nm3nt_v4r14bl3s_c4n_b3_s3cr3t_2352}
 
 Check the website on the given url
 
-<img src="../images/big.png" />
+<img src="./images/big.png" />
 
 It shows the pin result for given IPs.
 Try and get a reverse shell on it.
@@ -31,7 +31,7 @@ We can use python http.server to send the file. At the same time keep the netcat
 
 After getting a reverse shell, try snoop around to find the flag. If you check the enviornment variables using `env` , you get the flag
 
-<img src="../images/bigflag.png" />
+<img src="./images/bigflag.png" />
 
 
 ### The flag found is:
