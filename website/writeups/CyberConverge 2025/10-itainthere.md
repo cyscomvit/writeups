@@ -31,7 +31,6 @@ Can you really break the pincode? ...
 Try if you must: ^CTraceback (most recent call last):
   File "/tmp/selfgz116517/./pin_checker.py", line 105, in <module>
     main()
-    ~~~~^^
   File "/tmp/selfgz116517/./pin_checker.py", line 82, in main
     pin = input("Try if you must: ")
 KeyboardInterrupt
@@ -43,12 +42,13 @@ But visiting it after execution shows nothing. So we try and access it while exe
 But what we need is the flag from this function:
 
 ```python
+{% raw %}
 def generate_real_flag(pin):
-    FLAG_PREFIX = "CBCV{%s}"
+    FLAG_PREFIX =  "CBCV{%s}"
 
     hashed_pin = hashlib.blake2b((pin + "blindinglights").encode("utf-8")).hexdigest()[:32]
     return FLAG_PREFIX % hashed_pin
-
+{% endraw %}
 ```
 
 This is called when entered pin is 98315. Use this to get the correct flag with the program.
