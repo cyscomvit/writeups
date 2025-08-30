@@ -63,5 +63,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/_site/
           publish_branch: gh-pages
-          cname: writeups.cyscomvit.com
 
