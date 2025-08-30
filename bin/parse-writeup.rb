@@ -77,7 +77,7 @@ parts = process(doc).select{|x| x.length > 0}.map{|x|
 }
 
 overview_idx = parts.index{|res| res[:title] == "Overview" }
-if overview_idx && overview_idx < 3
+if overview_idx < 3
   parts = parts[(overview_idx + 1)..]
 end
 

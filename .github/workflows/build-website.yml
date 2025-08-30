@@ -41,17 +41,6 @@ jobs:
           bundle install --jobs 4 --retry 3
           npm install
           bundle pristine ffi
-      - name: Generate writeups from writeup.md
-        run: |
-          # For any collection folder that contains a single writeup.md, run the parser
-          # so it generates per-challenge markdown files before the Jekyll build.
-          cd website
-          for d in writeups/*; do
-            if [ -f "$d/writeup.md" ]; then
-              echo "Parsing $d"
-              (cd "$d" && bundle exec ruby ../../../bin/parse-writeup.rb)
-            fi
-          done
       # END Dependencies
       - name: Build Site
         run: |
@@ -61,17 +50,9 @@ jobs:
           export PATH=/home/runner/.local/bin:$PATH
           JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter -d _site/
 
-      - name: Add CNAME to publish directory
-        run: |
-          # ensure the CNAME in repo root is copied into the generated site so GitHub Pages uses the custom domain
-          if [ -f CNAME ]; then
-            mkdir -p website/_site
-            cp CNAME website/_site/CNAME
-          fi
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
           publish_dir: ./website/_site/
           publish_branch: gh-pages
-

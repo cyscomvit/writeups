@@ -136,7 +136,7 @@ collections:
     output: true
     sort_by: order
   writeups:
-    output: true
+    output: false
 
 defaults:
   - scope:
