@@ -1,7 +1,7 @@
 ---
 layout: ctf-event
 title: CyberConverge 2025
-date: 2025-09-28
+date: 2025-08-28
 cover: logo.png
 ---
 
