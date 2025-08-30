@@ -10,8 +10,9 @@ tags: []
 flag: CBCV{snarky_gpt_owns_you_ez}
 ---
 
-# SnarkyGPT CTF Challenge Walkthrough
+# SnarkyGPT CTF
 
+* Author: Prithvi
 
 ## Step 1: Trying Basic Stuff
 
