@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Mouse Trap
+level:
 difficulty: medium
 points: 350
 categories: [cyptography]

@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Passz CheckS
+level:
 difficulty: hard
 points: 500
 categories: [Reverse Engineering]

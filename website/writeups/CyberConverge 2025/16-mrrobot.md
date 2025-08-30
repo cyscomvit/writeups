@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Mr. Robot
+level:
 difficulty: hard
 points: 500
 categories: [pwn]

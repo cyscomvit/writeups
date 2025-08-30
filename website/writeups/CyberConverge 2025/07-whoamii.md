@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Who am I?
+level:
 difficulty: easy
 points: 350
 categories: [Web]

@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Breach
+level:
 difficulty: easy
 points: 100
 categories: [Misc]

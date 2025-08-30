@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Around The World
+level:
 difficulty: Medium
 points: 400
 categories: [OSINT]

@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Look beyond what you see 
+level:
 difficulty: medium
 points: 300
 categories: [misc]

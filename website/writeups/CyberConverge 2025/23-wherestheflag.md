@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Where's The Flag?
+level:
 difficulty: hard
 points: 400
 categories: [steganography]

@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Easy Flag
+level:
 difficulty: easy
 points: 300
 categories: [Web]

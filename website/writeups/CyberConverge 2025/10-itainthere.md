@@ -2,6 +2,7 @@
 layout: writeup
 
 title: It ain't here
+level:
 difficulty: hard
 points: 500
 categories: [Reverse engineering]

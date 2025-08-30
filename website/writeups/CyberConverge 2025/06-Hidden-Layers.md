@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Hidden Layers
+level:
 difficulty: easy
 points: 200
 categories: [steganography]

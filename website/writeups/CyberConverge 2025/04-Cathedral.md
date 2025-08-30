@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Cathedral
+level:
 difficulty: easy
 points: 100
 categories: [OSINT]

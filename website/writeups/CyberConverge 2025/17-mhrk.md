@@ -2,6 +2,7 @@
 layout: writeup
 
 title: My hostel room key
+level:
 difficulty: easy
 points: 150
 categories: [misc]

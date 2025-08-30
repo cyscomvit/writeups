@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Vibe Checker
+level:
 difficulty: hard
 points: 400
 categories: [Reverse engineering]

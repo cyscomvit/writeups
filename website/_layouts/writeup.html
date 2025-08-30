@@ -3,11 +3,26 @@ layout: page
 ---
 
 <h1> {{ page.title }} </h1>
-
-{{ content }}
-
-<h2> Flag </h2>
-
-<code>
-{{page.flag}}
-</code>
++
++
++{%- comment -%}
++Render the rendered content block first. Some builds may render `content` empty depending on how the page is generated.
++Fallback to `page.content` (markdownified) so the raw markdown still displays.
++{%- endcomment -%}
++
++{%- if content and content != "" -%}
++  {{ content }}
++{%- else -%}
++  {{ page.content | markdownify }}
++{%- endif -%}
++
++
++<h2> Flag </h2>
++
++<code>
++{{ page.flag }}
++</code>
++
++
++
+*** End Patch

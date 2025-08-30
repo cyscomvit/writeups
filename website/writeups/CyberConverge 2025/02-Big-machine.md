@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Big Machine
+level:
 difficulty: Hard
 points: 500
 categories: [Pwn]

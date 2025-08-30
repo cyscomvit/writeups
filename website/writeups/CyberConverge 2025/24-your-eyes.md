@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Your Eyes
+level:
 difficulty: easy
 points: 150
 categories: [steganography]

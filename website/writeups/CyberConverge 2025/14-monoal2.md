@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Monoalphabetic Shenanigans
+level:
 difficulty: hard
 points: 450
 categories: [cryptography]

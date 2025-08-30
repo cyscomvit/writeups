@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Intellectual Conversation
+level:
 difficulty: easy
 points: 200
 categories: [Misc]

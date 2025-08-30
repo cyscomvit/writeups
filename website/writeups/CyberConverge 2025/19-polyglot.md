@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Polyglot
+level:
 difficulty: hard
 points: 400
 categories: [web]

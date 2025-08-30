@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Layers
+level:
 difficulty: easy
 points: 150
 categories: [Cryptography]

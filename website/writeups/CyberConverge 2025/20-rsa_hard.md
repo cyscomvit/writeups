@@ -2,6 +2,7 @@
 layout: writeup
 
 title: RSA Hard
+level:
 difficulty: hard
 points: 400
 categories: [cyptography]

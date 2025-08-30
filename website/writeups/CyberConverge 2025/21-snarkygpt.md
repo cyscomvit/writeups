@@ -2,6 +2,7 @@
 layout: writeup
 
 title: SnarkyGPT
+level:
 difficulty: hard
 points: 450
 categories: [misc]

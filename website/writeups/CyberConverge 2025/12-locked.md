@@ -2,6 +2,7 @@
 layout: writeup
 
 title: Locked
+level:
 difficulty: hard
 points: 450
 categories: [Reverse engineering]
