@@ -53,6 +53,13 @@ jobs:
           python -m pip install --upgrade pip
           export PATH=/home/runner/.local/bin:$PATH
           JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter -d _site/
+      - name: Add CNAME to publish directory
+        run: |
+          # ensure the CNAME in repo root is copied into the generated site so GitHub Pages uses the custom domain
+          if [ -f CNAME ]; then
+            mkdir -p website/_site
+            cp CNAME website/_site/CNAME
+          fi
 
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v3
@@ -60,3 +67,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/_site/
           publish_branch: gh-pages
+          cname: writeups.cyscomvit.com
