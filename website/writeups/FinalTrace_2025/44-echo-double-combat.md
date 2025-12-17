@@ -66,9 +66,7 @@ for (int i = 0; i < 9; i++) {
     key[i] = key_enc[i] ^ 0x55;
 }
 
-// Read input and compare
 if (memcmp(input, key, 9) == 0) {
-    // Decrypt flag with repeating-key XOR
     for (int i = 0; i < 18; i++) {
         flag[i] = flag_enc[i] ^ key[i % 9];
     }
@@ -110,13 +108,7 @@ cys{s3cr3t_1s_un10cked}
 ### solver python code
 the code could change for new binary file as hex dump locations might change
 
-
-#!/usr/bin/env python3
-"""
-Solver for the Echo-Double Challenge
-Based on the decompiled code analysis
-"""
-
+```python
 def extract_data_from_binary(filename='l'):
     """Extract data from the binary file"""
     try:
@@ -318,3 +310,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
