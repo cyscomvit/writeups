@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: - **Category**: [Forensics]
+title: Phantom Fingerprints
 difficulty: Medium
 points: 500
 categories: [Forensics]

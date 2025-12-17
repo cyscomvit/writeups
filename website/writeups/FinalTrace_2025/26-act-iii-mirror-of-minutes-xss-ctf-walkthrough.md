@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: ACT III - Mirror of Minutes | XSS CTF Walkthrough
+title: Mirror of Minutes
 difficulty: Medium
 points: 500
 categories: [General]
@@ -10,7 +10,8 @@ tags: []
 flag: cys{m1rr0r_p4ss}
 ---
 
-# ACT III - Mirror of Minutes | XSS CTF Walkthrough
+
+## Mirror of Minutes
 
 ## Quick Start
 

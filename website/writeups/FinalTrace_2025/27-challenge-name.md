@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: Challenge Name
+title: Feed It the Fracture
 difficulty: Medium
 points: 500
 categories: [Forensics (E)]

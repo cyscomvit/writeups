@@ -1,19 +1,13 @@
 ---
 layout: writeup
 
-title: CTF Write-up — **Citadel Entry Lock** (Key 1–6 solutions & final flag)
+title: Citadel Entry Lock
 difficulty: Medium
 points: 500
 categories: [General]
 tags: []
 
 flag: CYS{SEAL_RAID_CROSS_MAAT_MAZE_HODOS}
----
-
-# CTF Write-up — **Citadel Entry Lock** (Key 1–6 solutions & final flag)
-
-
-
 ---
 
 # Key 1 — SEAL

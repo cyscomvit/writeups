@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: Output: TEMPORAL
+title: "Output: TEMPORAL"
 difficulty: Medium
 points: 500
 categories: [General]
