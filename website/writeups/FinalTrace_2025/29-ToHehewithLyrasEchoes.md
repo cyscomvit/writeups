@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: WRITEUP
+title: To Hehe with Lyra's Echoes
 difficulty: Medium
 points: 500
 categories: [General]
@@ -10,7 +10,6 @@ tags: []
 flag: CYS{HERACTUALECHOES}
 ---
 
-### WRITEUP
 
 # Basically you're treated with the link.
 https://echositee.vercel.app/

@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: Unknown Challenge
+title: Temporal Mergepoint
 difficulty: Medium
 points: 500
 categories: [General]
@@ -10,10 +10,7 @@ tags: []
 flag: CYS{temporal_merge_success}
 ---
 
-CTF61: Temporal Mergepoint
-Category: Web
-
-Author: riya mishra
+> Author: riya mishra
 
 Challenge Description
 Access control in a futuristic research portal fails. Users can view logs via /portal?user_id=<id>. Can you find the secret flag by manipulating parameters?

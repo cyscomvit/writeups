@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: "Output: TEMPORAL"
+title: "VAULT_7A"
 difficulty: Medium
 points: 500
 categories: [General]

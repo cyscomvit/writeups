@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: Sneaky Notes
+title: EON GATE
 difficulty: Medium
 points: 500
 categories: [Web]

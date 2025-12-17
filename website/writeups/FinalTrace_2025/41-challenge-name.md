@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: Challenge Name
+title: Auditor Encounter
 difficulty: Medium
 points: 500
 categories: [Web / ARG]
@@ -10,8 +10,6 @@ tags: []
 flag: CYS{audit_recovered_1A3F_07XZ}
 ---
 
-## Challenge Name
-**CTF17 — Auditor Encounter**
 
 - **Category**: Web / ARG
 - **Author**: Oviya 

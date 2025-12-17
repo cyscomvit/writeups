@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: Unknown Challenge
+title: Paradox Parable
 difficulty: Medium
 points: 500
 categories: [General]
@@ -10,7 +10,6 @@ tags: []
 flag: CYS{early_belief}
 ---
 
-CTF #28 – Paradox Parable (Variant II) Writeup
 This is a Easy Forensics challenge based on data carving an appended archive from a PNG file.
 
 The challenge includes a decoy flag and a misleading handbook:

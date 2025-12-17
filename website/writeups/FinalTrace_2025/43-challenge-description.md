@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: Challenge Description
+title: Lyra's Journal
 difficulty: Medium
 points: 500
 categories: [Forensics]
@@ -9,8 +9,6 @@ tags: []
 
 flag: CYS{THE_CLOCKS_WERE_LYING}
 ---
-
-#6 Lyra's Journal
 
 - **Category**: [Forensics]
 - **Author:** [Nihara Oommen]

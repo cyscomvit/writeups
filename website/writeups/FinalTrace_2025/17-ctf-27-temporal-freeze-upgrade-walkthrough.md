@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: CTF #27 – Temporal Freeze Upgrade | Walkthrough
+title: Temporal Freeze Upgrade
 difficulty: Medium
 points: 500
 categories: [General]
@@ -10,7 +10,7 @@ tags: []
 flag: cys{T1M3_SYNC}
 ---
 
-# CTF #27 – Temporal Freeze Upgrade | Walkthrough
+# Temporal Freeze Upgrade
 
 ## Objective
 Solve the mirror puzzle to decrypt the flag: `cys{T1M3_SYNC}`

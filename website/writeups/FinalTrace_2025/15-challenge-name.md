@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: Challenge Name
+title: Mirror Shatter
 difficulty: Medium
 points: 500
 categories: [Web]
@@ -9,8 +9,6 @@ tags: []
 
 flag: CYS{B43aking_th3_m1rr0r_1$_c00l}
 ---
-
-## Challenge Name
 
 - **Category**: Web
 - **Author**: Kirubahari

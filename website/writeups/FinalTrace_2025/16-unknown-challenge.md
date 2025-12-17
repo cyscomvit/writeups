@@ -1,7 +1,7 @@
 ---
 layout: writeup
 
-title: Unknown Challenge
+title: Echoes in the Hourglass
 difficulty: Medium
 points: 500
 categories: [General]
@@ -10,11 +10,7 @@ tags: []
 flag: FLAG{HOURGLASS_RECOVERED}
 ---
 
-Challenge Name: Echoes in the Hourglass
-
-Category: Forensics / Crypto / Binary
-Author: Vishal V
-Difficulty: Medium-Hard
+- **Author**: Vishal V
 
 Challenge Description
 An hourglass image from the Citadel’s archives hides the encryption key to twelve lost timeline fragments (timeline_grain_*.bin).
