@@ -1,0 +1,257 @@
+<!doctype html><html lang="en" data-mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover" ><meta name="generator" content="Jekyll v4.4.1" /><meta property="og:title" content="Citadel Entry Lock" /><meta property="og:locale" content="en" /><meta name="description" content="A set of CTF writeups and tutorials" /><meta property="og:description" content="A set of CTF writeups and tutorials" /><link rel="canonical" href="https://writeups.cyscomvit.com/writeups/FinalTrace_2025/38-ctf-write-up-citadel-entry-lock-key-16-solutions-final-flag.html" /><meta property="og:url" content="https://writeups.cyscomvit.com/writeups/FinalTrace_2025/38-ctf-write-up-citadel-entry-lock-key-16-solutions-final-flag.html" /><meta property="og:site_name" content="Cyscom" /><meta property="og:type" content="website" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Citadel Entry Lock" /><meta name="twitter:site" content="@CyscomVit" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","dateModified":"2025-12-17T21:10:46+05:30","description":"A set of CTF writeups and tutorials","headline":"Citadel Entry Lock","url":"https://writeups.cyscomvit.com/writeups/FinalTrace_2025/38-ctf-write-up-citadel-entry-lock-key-16-solutions-final-flag.html"}</script><title> Cyscom | Citadel Entry Lock</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Cyscom"><meta name="application-name" content="Cyscom"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.20.1/dist/tocbot.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script><body data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" class="mx-auto"> <img src="/assets/img/cyscom-logo.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title"> <a href="/">Cyscom</a></div><div class="site-subtitle font-italic">Cybersecurity Student Community of VIT Chennai</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>CTF EVENTS</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/posts/" class="nav-link"> <i class="fa-fw fas fa-pencil ml-xl-3 mr-xl-3 unloaded"></i> <span>POSTS</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/cyscomvit" aria-label="github" target="_blank" rel="noopener noreferrer" > <i class="fab fa-github"></i> </a> <a href="https://twitter.com/CyscomVit" aria-label="twitter" target="_blank" rel="noopener noreferrer" > <i class="fab fa-twitter"></i> </a> <a href="https://www.instagram.com/cyscomvit/" aria-label="instagram" target="_blank" rel="noopener noreferrer" > <i class="fab fa-instagram"></i> </a> <a href="mailto:cyscom@vit.ac.in" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="https://www.linkedin.com/company/cyscomvit/" aria-label="linkedin" target="_blank" rel="noopener noreferrer" > <i class="fab fa-linkedin"></i> </a></div></div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span><a href="/writeups/FinalTrace_2025/">FinalTrace 2025</a></span> <span>Citadel Entry Lock</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Writeup</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..." > </span> <span id="search-cancel">Cancel</span></div></div><div id="main-wrapper" class="d-flex justify-content-center"><div id="main" class="container pl-xl-4 pr-xl-4"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2"><h1> Citadel Entry Lock</h1><h1 id="key-1--seal">Key 1 — SEAL</h1><p><strong>Observation</strong></p><ul><li>The puzzle presents a 16×16 symbol grid → hint: <strong>hex</strong> (16 values: <code class="language-plaintext highlighter-rouge">0x0</code>–<code class="language-plaintext highlighter-rouge">0xF</code>).<li>One edge (first row / first column) contains a set of unique symbols which map to the 16 hex digits.<li>Some symbols are visually distinct (black-haired vs white-haired). The black-haired symbol positions encode the meaningful bytes.</ul><p><strong>Method</strong></p><ol><li>Map each unique symbol in the first row (or first column) to the hex digits <code class="language-plaintext highlighter-rouge">0x0</code>–<code class="language-plaintext highlighter-rouge">0xF</code>.<li>For the black-haired symbol occurrences, read the mapped hex bytes in sequence.<li>Convert the resulting hex byte sequence to ASCII.</ol><p><strong>Extracted data</strong></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>53 45 41 4C 𓀅 𓀃 𓀄 𓀅 𓀄 𓀁 𓀄 𓀌
+</pre></table></code></div></div><p>Interpreting the ASCII bytes <code class="language-plaintext highlighter-rouge">53 45 41 4C</code> → <code class="language-plaintext highlighter-rouge">"SEAL"</code>.</p><p><strong>Result (Key 1):</strong> <code class="language-plaintext highlighter-rouge">SEAL</code></p><hr /><h1 id="key-2--raid-håstad--low-exponent-broadcast-attack">Key 2 — RAID (Håstad / low-exponent broadcast attack)</h1><p><strong>Problem summary</strong></p><ul><li>You are given three RSA public keys with a small, identical public exponent <code class="language-plaintext highlighter-rouge">e = 3</code> and three ciphertexts <code class="language-plaintext highlighter-rouge">c1, c2, c3</code>.<li>The same plaintext <code class="language-plaintext highlighter-rouge">m</code> was encrypted under each modulus <code class="language-plaintext highlighter-rouge">n1, n2, n3</code>.<li>This is the classic setting for <strong>Håstad’s Broadcast Attack</strong>: when the same message is encrypted with small <code class="language-plaintext highlighter-rouge">e</code> and pairwise-coprime moduli, use CRT and extract the integer e-th root.</ul><p><strong>Mathematical setup</strong></p><p>We have:</p><p>[ m^3 \equiv c_1 \pmod{n_1},\qquad m^3 \equiv c_2 \pmod{n_2},\qquad m^3 \equiv c_3 \pmod{n_3}. ]</p><p>If the moduli are pairwise coprime and (m^3 &lt; n_1 n_2 n_3), then the CRT combined value (X) equals the integer (m^3). Recover (m) by taking the integer cube root.</p><p><strong>Given values</strong></p><div class="table-wrapper"><table><thead><tr><th>index<th style="text-align: right">modulus (n_i)<th style="text-align: right">ciphertext (c_i)<tbody><tr><td>1<td style="text-align: right"><code class="language-plaintext highlighter-rouge">20000000000003</code><td style="text-align: right"><code class="language-plaintext highlighter-rouge">120045155700768461749</code><tr><td>2<td style="text-align: right"><code class="language-plaintext highlighter-rouge">30000000000007</code><td style="text-align: right"><code class="language-plaintext highlighter-rouge">22749457632</code><tr><td>3<td style="text-align: right"><code class="language-plaintext highlighter-rouge">40000000000009</code><td style="text-align: right"><code class="language-plaintext highlighter-rouge">2800451557007722749457632</code><tr><td>e<td style="text-align: right"><code class="language-plaintext highlighter-rouge">3</code><td style="text-align: right">(public exponent)</table></div><p><strong>Solution steps (summary)</strong></p><ol><li>Use the Chinese Remainder Theorem (CRT) to compute <code class="language-plaintext highlighter-rouge">X</code> such that <code class="language-plaintext highlighter-rouge">X ≡ c_i (mod n_i)</code> for all i. This produces a unique <code class="language-plaintext highlighter-rouge">X</code> modulo <code class="language-plaintext highlighter-rouge">N_total = n1*n2*n3</code>.<li>If <code class="language-plaintext highlighter-rouge">m^3 &lt; N_total</code>, <code class="language-plaintext highlighter-rouge">X</code> equals <code class="language-plaintext highlighter-rouge">m^3</code> as an integer.<li>Compute the integer cube root of <code class="language-plaintext highlighter-rouge">X</code> to recover <code class="language-plaintext highlighter-rouge">m</code>.<li>Convert <code class="language-plaintext highlighter-rouge">m</code> (integer) to a big-endian hex string and then to ASCII to read the plaintext.</ol><p><strong>Python reference (concise, reproducible)</strong></p><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre><td class="rouge-code"><pre><span class="c1"># Requires: sympy, gmpy2
+</span><span class="kn">from</span> <span class="n">sympy.ntheory.modular</span> <span class="kn">import</span> <span class="n">crt</span>
+<span class="kn">from</span> <span class="n">gmpy2</span> <span class="kn">import</span> <span class="n">iroot</span>
+
+<span class="c1"># Provided moduli and ciphertexts
+</span><span class="n">n</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">20000000000003</span><span class="p">,</span>      <span class="c1"># n1
+</span>    <span class="mi">30000000000007</span><span class="p">,</span>      <span class="c1"># n2
+</span>    <span class="mi">40000000000009</span>       <span class="c1"># n3
+</span><span class="p">]</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">120045155700768461749</span><span class="p">,</span>          <span class="c1"># c1
+</span>    <span class="mi">22749457632</span><span class="p">,</span>                    <span class="c1"># c2
+</span>    <span class="mi">2800451557007722749457632</span>       <span class="c1"># c3
+</span><span class="p">]</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># 1) CRT -&gt; resultant = m^3
+</span><span class="n">resultant</span><span class="p">,</span> <span class="n">modulus</span> <span class="o">=</span> <span class="nf">crt</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">CRT result (m^3):</span><span class="sh">"</span><span class="p">,</span> <span class="n">resultant</span><span class="p">)</span>
+
+<span class="c1"># 2) integer cube root
+</span><span class="n">m_int</span><span class="p">,</span> <span class="n">is_perfect</span> <span class="o">=</span> <span class="nf">iroot</span><span class="p">(</span><span class="n">resultant</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">is_perfect</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="nc">ValueError</span><span class="p">(</span><span class="sh">"</span><span class="s">CRT result is not a perfect cube; attack failed.</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Recovered integer m:</span><span class="sh">"</span><span class="p">,</span> <span class="n">m_int</span><span class="p">)</span>
+
+<span class="c1"># 3) convert to ASCII
+</span><span class="n">hex_val</span> <span class="o">=</span> <span class="nf">hex</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">m_int</span><span class="p">))[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">hex_val</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">hex_val</span> <span class="o">=</span> <span class="sh">"</span><span class="s">0</span><span class="sh">"</span> <span class="o">+</span> <span class="n">hex_val</span>
+<span class="n">plaintext</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">.</span><span class="nf">fromhex</span><span class="p">(</span><span class="n">hex_val</span><span class="p">).</span><span class="nf">decode</span><span class="p">(</span><span class="sh">'</span><span class="s">ascii</span><span class="sh">'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Plaintext:</span><span class="sh">"</span><span class="p">,</span> <span class="n">plaintext</span><span class="p">)</span>
+</pre></table></code></div></div><p><strong>Intermediate / expected values</strong></p><ul><li>CRT result <code class="language-plaintext highlighter-rouge">m^3</code> (as computed): <code class="language-plaintext highlighter-rouge">262800451557007722749457632</code><li>Integer cube root <code class="language-plaintext highlighter-rouge">m</code>: <code class="language-plaintext highlighter-rouge">1380010308</code><li>Hex of <code class="language-plaintext highlighter-rouge">m</code> (big-endian): <code class="language-plaintext highlighter-rouge">0x52414944</code> → ASCII: <code class="language-plaintext highlighter-rouge">"RAID"</code></ul><p><strong>Result (Key 2):</strong> <code class="language-plaintext highlighter-rouge">RAID</code></p><hr /><h1 id="key-3--cross">Key 3 — CROSS</h1><p><strong>Observation</strong></p><ul><li>A word search / letter grid with very few actual English words.<li>The visible words (the only real words in the grid) are <code class="language-plaintext highlighter-rouge">"THE"</code>, <code class="language-plaintext highlighter-rouge">"ANSWER"</code>, <code class="language-plaintext highlighter-rouge">"IS"</code>, <code class="language-plaintext highlighter-rouge">"CROSS"</code>.</ul><p><strong>Method</strong></p><ul><li>Either brute-force search the grid for words or visually scan it.<li>The sequence of real words forms the phrase: <strong>“THE ANSWER IS CROSS”</strong>.</ul><p><strong>Result (Key 3):</strong> <code class="language-plaintext highlighter-rouge">CROSS</code></p><hr /><h1 id="key-4--maat">Key 4 — MAAT</h1><p><strong>Overview</strong></p><p>The ciphertext is a layered transformation pipeline. Working backwards through the layers yields a SHA-512 digest which, when interpreted/decoded, produces the key.</p><p><strong>Pipeline (as given / reversed)</strong></p><ol><li><code class="language-plaintext highlighter-rouge">SKIP CIPHER (size = 17)</code> → produces a tokenized string<li><code class="language-plaintext highlighter-rouge">TWIN HEX</code> transformation<li><code class="language-plaintext highlighter-rouge">KENNY LANG</code> (South Park / simple substitution style encoding)<li><code class="language-plaintext highlighter-rouge">TWIN HEX</code><li><code class="language-plaintext highlighter-rouge">SHA512</code><li>ASCII decode → final key</ol><p><strong>Notable intermediate</strong></p><ul><li>SKIP CIPHER(SIZE=17): ``` 1KU55X5KZ5HJ5AX5AL1H75MZ5A85YR5T75HB1AZ5KP5TP5JR5AB1HZ5KB5HK5OR1AW5WX5HZ1HR5KR5TP5W85TZ5AR1AR5HX5TB1AR5T85H85HB1TZ5MZ59Q5T85W85TU5TP5TR5HR5T85HR5KR1AB19R5AJ1XB1SB1AR5TR5WR5HZ1HR5585H81K855Z5K85AZ5AR5T81K85T85HB18R5AJ5W75TR5T71XP19Z5M85HB58R5TP5A85A81Y85YK15Q5H85WR1KR5575AK1AP5TX5T85KZ5HA5KZ5KR5OR5HB5MX5W85HK5AR5HZ5XX5W85A75AS5AP5TX5HK5KZ1T75WR5HB1AZ5KZ10R5W85TZ58P5T85HZ1HZ5WZ5H81KK5HJ1AR5AB1AB1HK5KR1H85KR5HB5HR1TX5WP5W85KR5MR5KZ5A81WB5WX5TR5KB1K85K85571A85881T81H85W85HR5K85TZ5WR5WJ1T75NJ11X1WX1HB5KX5885JB5ZZ1T75TR5AR5175KR5HR5AR5K85YZ5TP5NZ1H75AR1W85TP58P5LX5X75T85HZ</ul><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>
+- TWIN HEX:
+</pre></table></code></div></div><p>1bh5zh58w5xw58w5zk5rh1ba5rk58t5xt1u85rh1kj5rh5pt58t5rk5za1bh5zh58t57558t5za5zh1kn5rh5xt58w5pz1bh5zh58w5pt5zk5zh5ra1bk5rk5zh5pt1rh5rh1bh5za5rh5xt5rk5781bh58w58t5751rh5rk1bh5rk1pt58t5za58t1ja5rk58t5xt5ra5za58w1kj5rh5px1jk5za1ja5rk58w5xw58m5xy1bh5za1pw58w5zk58t1ja5rk58w5755za5791bh58w58t5791ly5ra1a158t5pt1q01kn5rh5755za5ra5rh1ja5zk5zk57858t5751ja5zk5ra5pt58w5q11bk5rk5ra57858m5xx1bk58m1sl18w5zh1ba5rh5ra5xx18t58w1bh5ra5ra5pt5za5xs1ko5zk5px18t58w1bh5ra5zh5791u85rh1ko5ra5xt5zh5py1ba5rh5ra5xt58t5rk5rk1bk58t58m5pt5rk5ra58t1bh58w58t5xt1wm58w1kh58t5755rh5xy1ba5zh5rh57858w5zk5rk</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>
+- KENNY LANG SOUTHPARK:
+</pre></table></code></div></div><p>1mpmfpp4fpppmm1fmpfmp18pmm53mmm1fmmppf1mpmfmf1fmpfpm57mmp1fpm71mpmfpm1pppmmf1pmppmm17mmm1mpfmmp1mpf41mfpfmf17mmp1mmp71fmpffm4fmpfmp1mfpffp53mmm54ppf4fmpfpp4ffp61mpf74fpppfm4fmpfpf1pff51mfpfmf55fmf19fmm17857mmf1pfmfmm4fppppf4fmf14fppmfm1fpm91pmpmff4ffp51pff850ppm1fmmmfp50mfp1mmfmfm1pfp058ppm50mfp1mmfpmf58pmm58mfp1pmm61fmmmfp1fmmpmp1pfmffm1mpmffm1mfpfmp19ffp51fmf1mmp61fpmmmf4fpppmp</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>
+- TWIN HEX: 
+</pre></table></code></div></div><p>1dw4wj1tt18j53a1so1du1tv57b1v71dv1nc1kj17a1fb1f41hu17b1b71ty4tt1hz53a54o4tw4z61f74wp4tx1r51hu55u19s17857c1ps4wo4u14wg1v91ki4z51r850m1sh50h1cg1q058m50h1cl58j58h1j61sh1sk1py1dy1ht19z51u1b61vc4wk</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>- The final SHA-512 digest in the chain is:
+</pre></table></code></div></div><p>2db38a0cdf882b8cf7932c685306373042071c8fa147dfe8a4c233b9a57a42eb1004f870b8a9b09552c17dcf81ca2078ffca25fcfa4b8184762f4117d21b98b4</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre>
+**Conclusion**
+
+- After reversing the transformations and decoding the SHA-512 result, the plaintext key obtained is: `MAAT`.
+
+**Result (Key 4):** `MAAT`
+
+---
+
+# Key 5 — MAZE
+
+**Observation**
+
+- Several 8×8-like grids produce SHA-256 digests when unspiralled.
+- Each grid, when read with the specified outward, left-start, clockwise spiral algorithm, yields an 8×32 (256-bit) SHA256 word fragment.
+- The puzzle lists grouped hexadecimal 32-byte SHA256 outputs and associates them to English words.
+
+**Interpretation**
+- Spiral Pattern
+</pre></table></code></div></div><p>1)20d21a67·ac24d157·0b679998·b4344d9a·83a3b8f3·1b42e0a5·40544695·1c439f90 2)f826b683·37334d8e·7e46f925·e8670e23·030c2178·3ba7b299·c7c724fc·d1a761ff 3)e1900ba2·7ab930f6·017e98af·bc903491·2edbb7c2·9b864a02·bec73e01·bf1f0eac 4)808bb15f·07488f45·f05fa88c·0d1d34d6·868bc51c·382a6d05·a305622c·c1ad27d3 5)416f57f6·65ff5633·517705da·91651f6e·4cfafdac·d8ba9431·51281d5f·d9cdfbe9 6)11eab27f·623d15ec·099e0f14·be6edf14·7c69d59b·8e7c49da·bd5d9f26·9ad8f2c8</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+</pre><td class="rouge-code"><pre>
+- The extracted SHA256 hashes correspond to the phrase:
+  - `The:`  `b344d80e24a3679999fa964450b34bc24d1578a35509f934c1418b0a20d21a67`
+  - `key:`  `2c70e12b7a0646f92279f427c7b38e7334d8e5389cff167a1dc30e73f826b683`
+  - `you:`  `bb0347a468d97e98a9c00e37cebec1ab930f6f1221cae0f1fbb92b07e1900ba2`
+  - `seek:` `cbd345d6a2815fa88d1022650386d07488f45c6c5c3d72da1ca380f0808bb15f`
+  - `is:`   `fa51fd49abf67705d6a35d18218c115ff5633aec1f9ebfdc9d5d4956416f57f6`
+  - `MAZE:` `d9edf594c7669e0f119d2f9d5dece923d15ec44ba68c2f8da9b87b0611eab27f`
+
+- Combined phrase: **"The key you seek is MAZE."**
+
+**Result (Key 5):** `MAZE`
+
+---
+
+# Key 6 — HODOS
+
+**Observation**
+
+- A long block of transformed text using a route cipher.
+- The transformation parameters: horizontal width = **4**; encoding uses a route reading pattern described as:
+  - *Write horizontally from top-left, then read vertical lines from bottom-left* (i.e. a specific route/permutation).
+
+**Method**
+
+- Implement or use an online route-cipher tool with the given width and read order. Decoding the route cipher recovers a plaintext passage where the key word is clearly visible.
+
+**Result (Key 6):** `HODOS`
+
+
+## Decryption script (route cipher — width = 4)
+
+```python
+import math
+# Ciphertext should be set to the encoded string (use raw string: r"...")
+ciphertext = ""  # &lt;-- paste ciphertext here
+width = 4
+
+# Compute number of rows (each row was written left→right)
+rows = math.ceil(len(ciphertext) / width)
+cols = width
+
+# Determine how many characters go in each column (left to right)
+remainder = len(ciphertext) % width
+col_lengths = [rows if i &lt; remainder else rows - 1 for i in range(width)] if remainder else [rows] * width
+
+# Split ciphertext into columns as read bottom→top, left→right
+columns = []
+idx = 0
+for c_len in col_lengths:
+    col = ciphertext[idx:idx + c_len]
+    columns.append(col[::-1])  # reverse each column (because read bottom→top)
+    idx += c_len
+
+# Reconstruct plaintext by reading horizontally (left→right, top→bottom)
+plaintext = ''
+for r in range(rows):
+    for c in range(cols):
+        if r &lt; len(columns[c]):
+            plaintext += columns[c][r]
+
+# Replace ⌴ with space (if used in your ciphertext)
+plaintext = plaintext.replace('⌴', ' ')
+
+print(plaintext)
+</pre></table></code></div></div><hr /><h1 id="final-assembly">Final assembly</h1><p>After recovering each key, assemble them in the instructed order to form the final flag.</p><ul><li><strong>KEY 1:</strong> <code class="language-plaintext highlighter-rouge">SEAL</code><li><strong>KEY 2:</strong> <code class="language-plaintext highlighter-rouge">RAID</code><li><strong>KEY 3:</strong> <code class="language-plaintext highlighter-rouge">CROSS</code><li><strong>KEY 4:</strong> <code class="language-plaintext highlighter-rouge">MAAT</code><li><strong>KEY 5:</strong> <code class="language-plaintext highlighter-rouge">MAZE</code><li><strong>KEY 6:</strong> <code class="language-plaintext highlighter-rouge">HODOS</code></ul><p><strong>FINAL FLAG:</strong></p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>CYS{SEAL_RAID_CROSS_MAAT_MAZE_HODOS}
+</pre></table></code></div></div><hr /><h2> Flag</h2><code> CYS{SEAL_RAID_CROSS_MAAT_MAZE_HODOS} </code></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div class="panel-heading"> <a href="https://github.com/cyscomvit/writeups/tree/main/website/writeups/FinalTrace_2025/38-ctf-write-up-citadel-entry-lock-key-16-solutions-final-flag.md" ><i class="fab fa-github"></i> Edit on GitHub </a></div></div></div></div></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">Trending Tags</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tag/authentication/">authentication</a> <a class="post-tag" href="/tag/idor/">idor</a> <a class="post-tag" href="/tag/sql-injection/">sql-injection</a> <a class="post-tag" href="/tag/ssti/">ssti</a> <a class="post-tag" href="/tag/xss/">xss</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><footer><div class="container pl-lg-4 pr-lg-4"><div class="d-flex justify-content-between align-items-center text-muted ml-md-3 mr-md-3"><div class="footer-left"><p class="mb-0"> © 2025 <a href="https://cyscomvit.com">Cyscom</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author." >Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0">Using the <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> theme <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a>.</p></div></div></div></footer><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false" ><div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="toast-body text-center pt-0"><p class="pl-2 pr-2 mb-3">A new version of content is available.</p><button type="button" class="btn btn-primary" aria-label="Update"> Update </button></div></div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5"></p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script defer src="/assets/js/dist/commons.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script>
