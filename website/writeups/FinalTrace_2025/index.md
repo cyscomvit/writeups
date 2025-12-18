@@ -5,4 +5,4 @@ date: 2025-10-31
 cover: 2.png
 ---
 
-Writeups for FinalTrace 2025 CTF.
+TechnoVIT's Flagship CTF event
