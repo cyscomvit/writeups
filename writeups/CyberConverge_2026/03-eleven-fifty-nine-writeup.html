@@ -1,0 +1,31 @@
+<hr />
+<p>layout: writeup</p>
+
+<p>title: The 11:59 PM Special
+difficulty: Easy
+points: 10
+categories: [Steganography/File Forensics]
+tags: []</p>
+
+<h2 id="flag-cyss00n_m4y_th3_w3_p4ss_c0m3">flag: CYS{s00n_m4y_th3_w3_p4ss_c0m3}</h2>
+
+<h3 id="the-1159-pm-special">The 11:59 PM Special</h3>
+
+<ul>
+  <li>Author: Aditi Sahu</li>
+</ul>
+
+<p>This is a steganography and file forensics challenge. The provided PNG appears to be corrupted, so we inspect the file contents instead of relying only on the image.</p>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">strings</code> command, we can search for readable text inside the binary file:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>strings challenge.png | grep CYS
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This reveals the hidden flag appended at the end of the PNG file:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>CYS{s00n_m4y_th3_w3_p4ss_c0m3}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
