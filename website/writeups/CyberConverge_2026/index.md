@@ -5,4 +5,4 @@ date: 2026-08-18
 cover: logo.png
 ---
 
-The Premier Cybersecurity Event Where Innovation meets security
+A guided CTF event conducted by CyscomVIT
