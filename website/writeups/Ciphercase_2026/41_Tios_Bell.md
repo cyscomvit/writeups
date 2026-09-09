@@ -65,7 +65,7 @@ There are several laboratory-themed messages and diagnostic strings.
 The binary also contains the flag format:
 
 ```text
-CYS{%s}
+{% raw %}CYS{%s}{% endraw %}
 ```
 
 but the actual flag is generated at runtime.
