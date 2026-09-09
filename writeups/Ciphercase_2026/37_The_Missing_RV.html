@@ -1,0 +1,142 @@
+<hr />
+
+<p>layout: writeup</p>
+
+<p>title: The Missing RV
+difficulty: Hard
+points: 500
+categories: [OSINT]
+tags: []</p>
+
+<h2 id="flag-cys5sur_megasoriana_puebla_abandoned">flag: CYS{5SUR_MEGASORIANA_PUEBLA_ABANDONED}</h2>
+
+<p>The Missing RV</p>
+
+<p>Author: Nekkanti Aishani</p>
+
+<p>This is an OSINT-based CTF challenge where players must investigate hidden information, online identities, GitHub history, deleted files, social-media clues, travel locations, Wi-Fi information, and geographic evidence to determine the final location of the missing RV.</p>
+
+<p>Firstly, we inspect the given image:</p>
+
+<p>We are initially given an image of an RV. Since the supplied file is an SVG, we inspect the source/contents of the file rather than treating it only as an image.</p>
+
+<p>After examining the SVG source, we find a hidden identifier:</p>
+
+<p>[jpinkman04]</p>
+
+<p>Finding Jesse:</p>
+
+<p>Searching the discovered identifier leads us to Jesse’s online presence. From the account, we establish the identity as Jesse Pinkman and begin examining the available repositories.</p>
+
+<p>The GitHub account contains several repositories, but most appear to be ordinary personal material. The relevant repositories are:</p>
+
+<p>notes
+projects
+archive</p>
+
+<p>https://github.com/jpinkman04</p>
+
+<p>The 4 April clue:</p>
+
+<p>Inside the notes repository, we find a reference to 4 April. At this point, the date does not appear to mean much by itself, so we retain it as a potential clue.</p>
+
+<p>Inspecting Git history:</p>
+
+<p>The important information is not visible in the current version of the archive repository. Looking through the commit history, we find the commit “remove temporary information”.</p>
+
+<p>Inspecting the changes shows that notes/old-contact.txt was deleted. Recovering the deleted file gives us:</p>
+
+<p>old contact
+jpink 4 april
+don’t keep this around.</p>
+
+<p>This confirms that jpink and 4 April are connected.</p>
+
+<p>Following the Jane connection:</p>
+
+<p>The 4 April clue leads us to Jane. Jane’s fictional Mosaic profile contains a post associated with April 4:</p>
+
+<p>April 4</p>
+
+<p>met the guy next door properly today. we ended up talking for way longer than either of us planned. weird how some people are easier to talk to than you’d expect.</p>
+
+<p>This establishes a connection between Jane and Jesse and gives context to the previously unexplained date.</p>
+
+<p>Finding Andrea:</p>
+
+<p>Returning to Jesse’s Mosaic profile, we find a comment containing another unique identifier:</p>
+
+<p>Andrea M. @andrea_b0317
+did you ever find that old thing?</p>
+
+<p>The profile is unavailable, so we search for the handle externally. This leads us to Andrea’s controlled X/Twitter account:</p>
+
+<p>https://x.com/andrea_b0317</p>
+
+<p>Investigating Andrea’s posts:</p>
+
+<p>Andrea’s account contains several travel-related posts.</p>
+
+<p>“Jamaica Market just stopped for a bit before heading out.”</p>
+
+<p>Investigating the image leads us to Mercado Jamaica, Mexico City.</p>
+
+<p>Another post shows an airport:</p>
+
+<p>“made it here. way too early for this ■”</p>
+
+<p>The interior can be identified as Mexico City International Airport — Terminal 2.</p>
+
+<p>Another post shows a mountain/highway:</p>
+
+<p>“Long drive, but the view was worth it.”</p>
+
+<p>The distinctive snow-covered volcano is identified as Popocatépetl, placing the journey along the Mexico City–Puebla corridor.</p>
+
+<p>Wi-Fi investigation:</p>
+
+<p>Separately, Andrea’s account contains a screenshot pointing toward a DeepPaste-style Wi-Fi artifact.</p>
+
+<p>The artifact contains multiple SSIDs. We identify the relevant SSID and search for it in WiGLE.</p>
+
+<p>The intended investigation is:</p>
+
+<p>SSID → WiGLE → BSSID / Net ID → mapped coordinates</p>
+
+<p>This provides an independent geographic anchor. The BSSID is obtained from WiGLE rather than being directly exposed in the artifact.</p>
+
+<p>THIS IS A RABBIT HOLE.</p>
+
+<p>Correlating the geographic evidence:</p>
+
+<p>Andrea: Mercado Jamaica → Mexico City → MEX Terminal 2 → Popocatépetl → Mexico–Puebla corridor</p>
+
+<p>These clues can now be correlated to narrow down the relevant geographic area.</p>
+
+<p>Investigating the RV:</p>
+
+<p>We then return to the Jesse/RV evidence. The final location is not written plainly in one document. Instead, the player must combine geographic evidence, route information, visual evidence, and RV-specific evidence.</p>
+
+<p>The investigation narrows to the Puebla area, with the final location identified as:</p>
+
+<p>5 Sur / Mega Soriana, Puebla</p>
+
+<p>Determining the final incident:</p>
+
+<p>The separate phone/timestamp evidence provides the final piece of the investigation. This thread establishes Jesse’s last relevant phone call and is intentionally separate from the earlier geographic investigation.</p>
+
+<p>The two streams converge:</p>
+
+<p>last phone call + geographic evidence + RV evidence</p>
+
+<p>This reconstructs the incident and establishes where the missing RV ended up.</p>
+
+<p>Final flag:</p>
+
+<p>The final answer is based on the identified RV location and what incident took place through the phone call:</p>
+
+<p>5Sur_MegaSoriana_Puebla_abadoned</p>
+
+<p>The player submits the single final flag based on that location.</p>
+
+<h2 id="cys5sur_megasoriana_puebla_abandoned">CYS{5SUR_MEGASORIANA_PUEBLA_ABANDONED}</h2>

