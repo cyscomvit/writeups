@@ -30,10 +30,11 @@ endfor %} {% endif %}
 		<a href="{{ post.url | relative_url }}">
 			<div class="row no-gutters">
 				<div class="col-sm-2 d-flex justify-content-center">
+					{% assign cover = post.cover | default: 'cyscom-logo.png' %}
 					<img
 						class="card-img"
 						style="object-fit: contain"
-						src="{% link assets/img/{{post.cover | default: 'cyscom-logo.png'}} %}"
+						src="{{ '/assets/img/' | append: cover | relative_url }}"
 						alt="Event Logo"
 					/>
 				</div>
