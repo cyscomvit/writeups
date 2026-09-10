@@ -458,7 +458,7 @@
 </url>
 <url>
 <loc>https://writeups.cyscomvit.com/writeups/Ciphercase_2026/42_VENONA.html</loc>
-<lastmod>2026-09-09T18:35:19+05:30</lastmod>
+<lastmod>2026-09-10T22:28:32+05:30</lastmod>
 </url>
 <url>
 <loc>https://writeups.cyscomvit.com/writeups/FinalTrace_2025/43-challenge-description.html</loc>
@@ -467,6 +467,14 @@
 <url>
 <loc>https://writeups.cyscomvit.com/writeups/FinalTrace_2025/44-echo-double-combat.html</loc>
 <lastmod>2025-12-17T22:29:43+05:30</lastmod>
+</url>
+<url>
+<loc>https://writeups.cyscomvit.com/writeups/Ciphercase_2026/44_Los_Pollos_Bluebox.html</loc>
+<lastmod>2026-09-10T22:28:32+05:30</lastmod>
+</url>
+<url>
+<loc>https://writeups.cyscomvit.com/writeups/Ciphercase_2026/45_Heisenbergs_Lab.html</loc>
+<lastmod>2026-09-10T22:28:32+05:30</lastmod>
 </url>
 <url>
 <loc>https://writeups.cyscomvit.com/writeups/Ciphercase_2026/5_Blue_Noise.html</loc>
@@ -760,6 +768,9 @@
 <loc>https://writeups.cyscomvit.com/categories/crypto-steg/</loc>
 </url>
 <url>
+<loc>https://writeups.cyscomvit.com/categories/web-reverse-engineering/</loc>
+</url>
+<url>
 <loc>https://writeups.cyscomvit.com/categories/forensics-steganography/</loc>
 </url>
 <url>
@@ -1021,6 +1032,9 @@
 <loc>https://writeups.cyscomvit.com/category/crypto-steg/</loc>
 </url>
 <url>
+<loc>https://writeups.cyscomvit.com/category/web-reverse-engineering/</loc>
+</url>
+<url>
 <loc>https://writeups.cyscomvit.com/category/forensics-steganography/</loc>
 </url>
 <url>
@@ -1094,10 +1108,10 @@
 </url>
 <url>
 <loc>https://writeups.cyscomvit.com/writeups/Zypher_2023/writeupfiles/level3/unknown.pdf</loc>
-<lastmod>2026-09-09T19:46:01+05:30</lastmod>
+<lastmod>2026-09-10T22:28:54+05:30</lastmod>
 </url>
 <url>
 <loc>https://writeups.cyscomvit.com/_writeups/Zypher_2023/writeupfiles/level3/unknown.pdf</loc>
-<lastmod>2026-09-09T19:46:01+05:30</lastmod>
+<lastmod>2026-09-10T22:28:54+05:30</lastmod>
 </url>
 </urlset>
