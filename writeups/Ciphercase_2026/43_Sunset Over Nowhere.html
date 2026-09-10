@@ -1,0 +1,64 @@
+<p>Sunset Over Nowhere</p>
+
+<p>Author: Chitwan</p>
+
+<p>This is a forensics/steganography challenge involving image metadata, encoding, XOR, and a hidden ZIP file.</p>
+
+<p>First, inspect the image:</p>
+
+<p>file challenge.jpg
+exiftool challenge.jpg</p>
+
+<p>The metadata contains three encoded values:</p>
+
+<p>Make:        U2g0ZG93
+Description: Cvk3y
+Keywords:    5f3939</p>
+
+<p>Decode them:</p>
+
+<p>Base64 U2g0ZG93 → Sh4dow
+ROT13 Cvk3y → Pix3l
+Hex 5f3939 → _99</p>
+
+<p>The Copyright field says:</p>
+
+<p>Assembly order: A + B + C</p>
+
+<p>So the ZIP password is:</p>
+
+<p>Sh4dowPix3l_99</p>
+
+<p>Next, the XP Comment gives the XOR hint:</p>
+
+<p>XOR byte = (the answer to life, the universe, and everything) minus twelve</p>
+
+<p>42 - 12 = 30 = 0x1E</p>
+
+<p>So the XOR key is 0x1E.</p>
+
+<p>We then search for the hidden payload:</p>
+
+<p>grep -oba “STEG0” challenge.jpg</p>
+
+<p>Everything after the STEG0 marker is the XOR-obfuscated ZIP archive. Extract the payload and XOR each byte with 0x1E:</p>
+
+<p>key = 0x1E</p>
+
+<p>with open(“payload.bin”, “rb”) as f:
+    data = f.read()</p>
+
+<p>decoded = bytes(b ^ key for b in data)</p>
+
+<p>with open(“recovered.zip”, “wb”) as f:
+    f.write(decoded)</p>
+
+<p>The recovered ZIP can then be opened using:</p>
+
+<p>Sh4dowPix3l_99</p>
+
+<p>Inside the archive is flag.txt, which contains:</p>
+
+<p>CYS{m3t4d4t4_ch41ns_h1d3_th3_k3y}</p>
+
+<p>The fake password and fake flag in the metadata are decoys, so players must follow the actual metadata clues to reach the final flag.</p>
