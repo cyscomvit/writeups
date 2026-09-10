@@ -3,7 +3,7 @@ layout: writeup
 
 title: Los Pollos Bluebox
 difficulty: Medium
-points: 10
+points: 300
 categories: [Web/Reverse Engineering]
 tags: []
 

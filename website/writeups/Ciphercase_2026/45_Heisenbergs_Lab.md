@@ -1,9 +1,8 @@
 ---
 layout: writeup
-
 title: Heisenberg's Lab
 difficulty: Medium
-points: 30
+points: 300
 categories: [Web]
 tags: []
 

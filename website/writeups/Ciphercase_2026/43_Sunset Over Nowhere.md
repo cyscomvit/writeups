@@ -1,11 +1,12 @@
+---
 title: Sunset Over Nowhere
 difficulty: Medium-Hard
-points: 10
+points: 300
 categories: [Forensics/Steganography]
 tags: []
 
 flag: CYS{m3t4d4t4_ch41ns_h1d3_th3_k3y}
-
+---
 Sunset Over Nowhere
 
 Author: Chitwan
