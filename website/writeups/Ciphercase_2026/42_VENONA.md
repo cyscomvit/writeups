@@ -12,7 +12,7 @@ flag: CYS{V3N0N4_CR4CK5_TH3_BLU3_M3TH_C0D3}
 
 VENONA
 
-Author : Danniyel Franx
+Author : Daniyyel Franx
 
 ## Files handed to solvers
 - `cover.png` — real Fantasian-alphabet hint image with `secret.zip` appended after IEND
